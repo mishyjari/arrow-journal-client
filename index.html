@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Arrow Journal</title>
 
-	<link rel='stylesheet' type='text/css' href='styles/style.css'>
+	<link rel='stylesheet' type='text/css' href='stylesheets/style.css' />
 
 	<script src='src/index.js'></script>
 </head>
@@ -25,119 +25,121 @@
 	 		- Logout Button
 	 		- Edit User Info Button
 	 -->
-	<div id='welcome-page' class='page page-left'>
-		<div id='greeting'>
+	 <div id='all-pages'>
+		<div id='welcome-page' class='page page-left'>
+			<div id='greeting'>
+			</div>
+
+			<!-- Login Form -->
+			<div id="login-container">
+				<form id="login-form" action="#">
+					<input type='text' name='username-or-email' placeholder='Username or Email'>
+					<br />
+					<input type='password' name='password' class='text-field' placeholder='Password' />
+					<br />
+					<input type='submit' id='login' class='submit' value='login'>
+				</form>
+			</div>
+
+			<!-- Form to create new user -->
+			<div id='new-user'>
+				<form id='new-user-form' action='#' method='POST'>
+					<input type='text' name='firstname' class='text-field' placeholder='First Name' />
+					<br />
+					<input type='text' name='lastname' class='text-field' placeholder='Last Name' />
+					<br />
+					<input type='text' name='username' class='text-field' placeholder='Create Username' />
+					<br />
+					<input type='email' name='email' class='text-field' placeholder='Email Address' />
+					<br />
+					<input type='password' name='password' class='text-field' placeholder='Password' />
+					<br />
+					<input type='password' name='confirm-password' class='text-field' placeholder='Confirm Password' />
+					<br />
+					<input type='submit' class='submit' id='submit-new-user' value='Create Account' />
+				</form>
+			</div>
+
+			<!-- Form to create a new journal. Will display by default if user has no journals -->
+			<div id='new-journal'>
+				<form id='new-journal-form' action='#' method='POST'>
+					<input type='text' name='name' class='text-field' placeholder='Give your journal a name' />
+					<br />
+					<textarea class='text-area' name='description'></textarea>
+					<br />
+					<input type='submit' class='submit' id='submit-new-journal' value='Create Journal'>
+				</form>
+			</div>
+
+			<div id='welcome-user'>
+				<!-- Give the user a nice warm greeting -->
+	   			<!-- Also a good place for logout and edit user buttons -->
+			</div>
+
+			<div id="todays-tasks">
+				<!-- list todays tasks and hanging tasks from the past -->
+			</div>
+
+			<div id="journals-list">
+				<!-- List links to all of users journals (if more than 1) and button to add new journal -->
+			</div>
+
 		</div>
 
-		<!-- Login Form -->
-		<div id="login-container">
-			<form id="login-form" action="#">
-				<input type='text' name='username-or-email' placeholder='Username or Email'>
-				<br />
-				<input type='password' name='password' class='text-field' placeholder='Password' />
-				<br />
-				<input type='submit' id='login' class='submit' value='login'>
-			</form>
+		<!-- Welcome page right spread.
+	 		- If user is logged in and has journal, display index, else display about / info page 
+	 	 -->
+		<div id='index-page' class='page page-right'>
+			<div id='welcome-info'>
+				<!-- Show info about the app -->
+			</div>
+			<div id="index">
+				<!-- index of user's pages -->
+			</div>
 		</div>
 
-		<!-- Form to create new user -->
-		<div id='new-user'>
-			<form id='new-user-form' action='#' method='POST'>
-				<input type='text' name='firstname' class='text-field' placeholder='First Name' />
-				<br />
-				<input type='text' name='lastname' class='text-field' placeholder='Last Name' />
-				<br />
-				<input type='text' name='username' class='text-field' placeholder='Create Username' />
-				<br />
-				<input type='email' name='email' class='text-field' placeholder='Email Address' />
-				<br />
-				<input type='password' name='password' class='text-field' placeholder='Password' />
-				<br />
-				<input type='password' name='confirm-password' class='text-field' placeholder='Confirm Password' />
-				<br />
-				<input type='submit' class='submit' id='submit-new-user' value='Create Account' />
-			</form>
+		<div id="year-page-left" class='page page-left'>
+			<div id="year-jan"></div>
+			<div id="year-feb"></div>
+			<div id="year-mar"></div>
+			<div id="year-apr"></div>
+			<div id="year-may"></div>
+			<div id="year-jun"></div>
+		</div>
+		<div id="year-page-right" class='page page-right'>
+			<div id="year-jul"></div>
+			<div id="year-aug"></div>
+			<div id="year-sep"></div>
+			<div id="year-oct"></div>
+			<div id="year-nov"></div>
+			<div id="year-dec"></div>
 		</div>
 
-		<!-- Form to create a new journal. Will display by default if user has no journals -->
-		<div id='new-journal'>
-			<form id='new-journal-form' action='#' method='POST'>
-				<input type='text' name='name' class='text-field' placeholder='Give your journal a name' />
-				<br />
-				<textarea class='text-area' name='description' placeholder='Description (optional)' />
-				<br />
-				<input type='submit' class='submit' id='submit-new-journal' value='Create Journal'>
-			</form>
+		<div id="month-page-left" class='page page-left'>
+			<div id="month-main">
+				<ol id='month-list-days'></ol>
+				<!-- Render a form item for each day in the month -->
+			</div>
+			<div id="month-modal">
+				<!-- Modal or dynamic element for showing additional details for an item -->
+			</div>
+		</div>
+		<div id="month-page-right" class='page page-right'>
+			<!-- Not sure whats best here... maybe goals, memos, something freeform? -->
 		</div>
 
-		<div id='welcome-user'>
-			<!-- Give the user a nice warm greeting -->
-	   		<!-- Also a good place for logout and edit user buttons -->
+		<div id="week-page-left" class='page page-left'>
+			<div id="week-sun"></div>
+			<div id="week-mon"></div>
+			<div id="week-tue"></div>
+			<div id="week-wed"></div>
 		</div>
-
-		<div id="todays-tasks">
-			<!-- list todays tasks and hanging tasks from the past -->
+		<div id="week-page-right" class='page page-right'>
+			<div id="week-thu"></div>
+			<div id="week-fri"></div>
+			<div id="week-sat"></div>
+			<div id="next-week"></div>
 		</div>
-
-		<div id="journals-list">
-			<!-- List links to all of users journals (if more than 1) and button to add new journal -->
-		</div>
-
-	</div>
-
-	<!-- Welcome page right spread.
-	 	- If user is logged in and has journal, display index, else display about / info page 
-	 -->
-	<div id='index-page' class='page page-right'>
-		<div id='welcome-info'>
-			<!-- Show info about the app -->
-		</div>
-		<div id="index">
-			<!-- index of user's pages -->
-		</div>
-	</div>
-
-	<div id="year-page-left" class='page page-left'>
-		<div id="year-jan"></div>
-		<div id="year-feb"></div>
-		<div id="year-mar"></div>
-		<div id="year-apr"></div>
-		<div id="year-may"></div>
-		<div id="year-jun"></div>
-	</div>
-	<div id="year-page-right" class='page page-right'>
-		<div id="year-jul"></div>
-		<div id="year-aug"></div>
-		<div id="year-sep"></div>
-		<div id="year-oct"></div>
-		<div id="year-nov"></div>
-		<div id="year-dec"></div>
-	</div>
-
-	<div id="month-page-left" class='page page-left'>
-		<div id="month-main">
-			<!-- Render a form item for each day in the month -->
-		</div>
-		<div id="month-modal">
-			<!-- Modal or dynamic element for showing additional details for an item -->
-		</div>
-	</div>
-	<div id="month-page-right" class='page page-right'>
-		<!-- Not sure whats best here... maybe goals, memos, something freeform? -->
-	</div>
-
-	<div id="week-page-left" class='page page-left'>
-		<div id="week-sun"></div>
-		<div id="week-mon"></div>
-		<div id="week-tue"></div>
-		<div id="week-wed"></div>
-	</div>
-	<div id="week-page-right" class='page page-right'>
-		<div id="week-thu"></div>
-		<div id="week-fri"></div>
-		<div id="week-sat"></div>
-		<div id="next-week"></div>
-	</div>
-	
+	</div>	
 </body>
 </html>
