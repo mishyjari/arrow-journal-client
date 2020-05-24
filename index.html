@@ -4,16 +4,72 @@
 	<meta charset="UTF-8">
 	<title>Arrow Journal</title>
 
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css' />
 
 	<script src='src/index.js'></script>
 </head>
 <body>
-	<div id='journal-main'>
-	<!-- top level div to hold the background styles. This should not stay static, but evertyhing else will be nested inside -->
+
+	<div class="container">
+		<main id='journal-main'>
+			<div class="tab-container">
+				<div class="tab" id="year-tab">year</div>
+				<div class="tab" id="month-tab">month</div>
+				<div class="tab" id="week-tab">week</div>
+				<div class="tab" id="day-tab">day</div>
+				<div class="tab" id="memo-tab">memos</div>
+			</div>
+			<div class="inner-container">
+				<section class="left">
+				<!-- Login Form -->
+					<div id="login-container">
+						<h2>Sign In</h2>
+						<form id="login-form" action="#">
+							<input type='text' name='username-or-email' placeholder='Username or Email'>
+							<br />
+							<input type='password' name='password' class='text-field' placeholder='Password' />
+							<br />
+							<input type='submit' id='login' class='submit btn' value='login'>
+						</form>
+					</div>
+	
+					<!-- Form to create new user -->
+					<div id='new-user'>
+						<h2>New User?</h2>
+						<form id='new-user-form' action='#' method='POST'>
+							<input type='text' name='firstname' class='text-field' placeholder='First Name' />
+							<br />
+							<input type='text' name='lastname' class='text-field' placeholder='Last Name' />
+							<br />
+							<input type='text' name='username' class='text-field' placeholder='Create Username' />
+							<br />
+							<input type='email' name='email' class='text-field' placeholder='Email Address' />
+							<br />
+							<input type='password' name='password' class='text-field' placeholder='Password' />
+							<br />
+							<input type='password' name='confirm-password' class='text-field' placeholder='Confirm Password' />
+							<br />
+							<input type='submit' class='submit btn' id='submit-new-user' value='Create Account' />
+						</form>
+					</div>
+				</section>
+				<section class="right">
+					blah
+				</section>
+			</div>
+		</main>
+	</div>	
+</body>
+</html>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+<!-- 
+<div id='journal-main'>
+	top level div to hold the background styles. This should not stay static, but evertyhing else will be nested inside
 	</div>
 
-	<!-- Welcome page left spread.
+	 Welcome page left spread.
 	 	Conditions:
 	 	- User not logged in: Show login form and button that will switch login form to signup form 
 	 	- User logged in, but has no journals: show the new journal form.
@@ -24,13 +80,13 @@
 	 		- Button to add new journal and a list of journals if they have more than one
 	 		- Logout Button
 	 		- Edit User Info Button
-	 -->
+
 	 <div id='all-pages'>
 		<div id='welcome-page' class='page page-left'>
 			<div id='greeting'>
 			</div>
 
-			<!-- Login Form -->
+			Login Form
 			<div id="login-container">
 				<form id="login-form" action="#">
 					<input type='text' name='username-or-email' placeholder='Username or Email'>
@@ -41,7 +97,7 @@
 				</form>
 			</div>
 
-			<!-- Form to create new user -->
+			Form to create new user
 			<div id='new-user'>
 				<form id='new-user-form' action='#' method='POST'>
 					<input type='text' name='firstname' class='text-field' placeholder='First Name' />
@@ -60,7 +116,7 @@
 				</form>
 			</div>
 
-			<!-- Form to create a new journal. Will display by default if user has no journals -->
+			Form to create a new journal. Will display by default if user has no journals
 			<div id='new-journal'>
 				<form id='new-journal-form' action='#' method='POST'>
 					<input type='text' name='name' class='text-field' placeholder='Give your journal a name' />
@@ -72,29 +128,29 @@
 			</div>
 
 			<div id='welcome-user'>
-				<!-- Give the user a nice warm greeting -->
-	   			<!-- Also a good place for logout and edit user buttons -->
+				Give the user a nice warm greeting
+	   			Also a good place for logout and edit user buttons
 			</div>
 
 			<div id="todays-tasks">
-				<!-- list todays tasks and hanging tasks from the past -->
+				list todays tasks and hanging tasks from the past
 			</div>
 
 			<div id="journals-list">
-				<!-- List links to all of users journals (if more than 1) and button to add new journal -->
+				List links to all of users journals (if more than 1) and button to add new journal
 			</div>
 
 		</div>
 
-		<!-- Welcome page right spread.
+		Welcome page right spread.
 	 		- If user is logged in and has journal, display index, else display about / info page 
-	 	 -->
+	 	
 		<div id='index-page' class='page page-right'>
 			<div id='welcome-info'>
-				<!-- Show info about the app -->
+				Show info about the app
 			</div>
 			<div id="index">
-				<!-- index of user's pages -->
+				index of user's pages
 			</div>
 		</div>
 
@@ -118,14 +174,14 @@
 		<div id="month-page-left" class='page page-left'>
 			<div id="month-main">
 				<ol id='month-list-days'></ol>
-				<!-- Render a form item for each day in the month -->
+				Render a form item for each day in the month
 			</div>
 			<div id="month-modal">
-				<!-- Modal or dynamic element for showing additional details for an item -->
+				Modal or dynamic element for showing additional details for an item
 			</div>
 		</div>
 		<div id="month-page-right" class='page page-right'>
-			<!-- Not sure whats best here... maybe goals, memos, something freeform? -->
+			Not sure whats best here... maybe goals, memos, something freeform?
 		</div>
 
 		<div id="week-page-left" class='page page-left'>
@@ -140,6 +196,5 @@
 			<div id="week-sat"></div>
 			<div id="next-week"></div>
 		</div>
-	</div>	
-</body>
-</html>
+	</div>
+-->
