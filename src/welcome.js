@@ -25,8 +25,8 @@ const renderWelcomePublic = () => {
 };
 
 // Render welcome page if user session exists
-const renderWelcomePagePrivate = () => {
-
+const renderWelcomePagePrivate = userId => {
+  leftPage.innerHTML = 'logged in as ' + userId;
 };
 
 // Forms for public (not logged in) welcome spread
@@ -38,7 +38,7 @@ const renderLoginForm = () => {
   loginContainer.innerHTML = `
     <h2>Sign In</h2>
     <form id="login-form" action="#">
-      <input type='text' name='username-or-email' placeholder='Username or Email'>
+      <input type='text' name='username' placeholder='Username'>
       <br />
       <input type='password' name='password' class='text-field' placeholder='Password' />
       <br />
@@ -47,7 +47,45 @@ const renderLoginForm = () => {
   `;
 
   leftPage.appendChild(loginContainer);
+
+  const form = document.getElementById('login-form')
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const loginData = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    }
+
+    const headerData = {
+      headers: _HEADERS,
+      method: "POST",
+      body: JSON.stringify(loginData)
+    }
+
+    const url = 'http://localhost:3000/login';
+
+    fetch( url, headerData )
+    .then( res => res.json() )
+    .then( user => {
+      // This is not secure. Don't do this. We will get back to secure sessions if theres time.
+      document.cookie = `user=${user.id}`
+      clearPages()
+      renderWelcomePagePrivate(user.id)
+    })
+    .catch(err => {
+
+      renderWelcomePublic();
+      loginContainer.querySelector('h2').innerHTML = 'Invalid Credentials!'
+      // Kicking a JSON.parse error on invalid entries. Lets handle this better!
+      console.log("Error in login: " + err)
+    })
+  })
+
+
 };
+
 
 // Render New User Form
 const renderNewUserForm = () => {
@@ -72,6 +110,39 @@ const renderNewUserForm = () => {
       </form>
     `;
     leftPage.appendChild(newUserContainer);
+
+    const form = document.getElementById('new-user-form')
+
+    form.reset()
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const form = e.target;
+
+      const newUserData = {
+        first_name: form.firstname.value,
+        last_name: form.lastname.value,
+        username: form.username.value,
+        email: form.email.value,
+        password: form.password.value,
+      };
+
+      const headerData = {
+        headers: _HEADERS,
+        method: "POST",
+        body: JSON.stringify(newUserData)
+      };
+
+
+      const url = 'http://localhost:3000/users'
+
+      fetch(url, headerData)
+      .then( res => res.json() )
+      .then( user => {
+        console.log(user)
+      })
+    })
 };
 
 // Render about page

@@ -2,7 +2,6 @@
 // If passed an arg (string) for year, will return jan-dec of that year
 // Else will return 12 months beginning with current month
 const getMonths = year => {
-
   let d;
   year ? d = new Date(year,0) : d = new Date();
   d.setDate(1);
@@ -28,6 +27,10 @@ const createMonthCell = dateObject => {
     <ul class='month-cell-list'></ul>
     
   `;
+
+  // Get the month cell ul and append events as li
+
+
   return monthCell;
 };
 

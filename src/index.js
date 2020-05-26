@@ -4,9 +4,28 @@ const _HEADERS = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+
+	// A terrible way of handling session cookies. Dont do this.
+	const activeSession = () => {
+		const session = document.cookie;
+		if( session.includes('user=') ){
+			return session.split('=')[1]
+		} else {
+			return false;
+		}
+	};
+
+	const currentUser = activeSession();
+
+	if( activeSession() ){
+		renderWelcomePagePrivate(currentUser)
+	} else {
+		renderWelcomePublic();
+	}
+
 	populateRightTabs();
 	renderWelcomePublic();
-	
+
 	const fontSelect = document.querySelector("#font-select");
 	const body = document.querySelector('body');
 
