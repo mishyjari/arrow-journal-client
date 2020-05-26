@@ -30,7 +30,7 @@
 	transition: all .2s ease-in-out;
   }
   form input[type="text"]:hover, form input[type="text"]:focus, form input[type="email"]:hover, form input[type="email"]:focus, form input[type="password"]:hover, form input[type="password"]:focus {
-	border-bottom: 2px solid #007EA7;
+	border-bottom: 3px solid #007EA7;
   }
   
   #new-user {

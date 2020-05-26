@@ -15,6 +15,13 @@
 	background: linear-gradient(to right, #003459, #007EA7);
 	margin-top: 0;
   }
+
+  input:focus,
+	select:focus,
+	textarea:focus,
+	button:focus {
+    outline: none;
+}
   
   .settings-toggle {
 	position: absolute;
