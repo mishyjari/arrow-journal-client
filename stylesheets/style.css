@@ -238,4 +238,13 @@
 	background: #007EA7;
 	cursor: pointer;
   }
-  
+
+  .add-event-dayline {
+  	color: #003459;
+	font-size: 1rem;
+	padding-right: .5rem;
+  }
+
+  .add-event-dayline:hover {
+	cursor: pointer;
+  }
