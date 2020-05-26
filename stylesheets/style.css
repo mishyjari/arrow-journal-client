@@ -13,11 +13,47 @@
   body {
 	background: -webkit-gradient(linear, left top, right top, from(#003459), to(#007EA7));
 	background: linear-gradient(to right, #003459, #007EA7);
+	margin-top: 0;
   }
   
+  .settings-toggle {
+	position: absolute;
+	background: #003459;
+	padding: .75rem 5rem 0;
+	font-size: 1.25rem;
+	left: 50%;
+	-webkit-transform: translatex(-50%);
+			transform: translatex(-50%);
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	text-align: center;
+	z-index: 11;
+  }
+  .settings-toggle p, .settings-toggle i, .settings-toggle label {
+	color: #fff;
+  }
+  .settings-toggle p {
+	margin-bottom: 1rem;
+  }
+  
+  .settings-toggle .settings-dropdown {
+	height: 0;
+	overflow: hidden;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+  }
+  
+  .settings-toggle:hover .settings-dropdown {
+	height: 100%;
+	padding-bottom: .75rem;
+  }
+  
+  #font-select:hover {
+	cursor: pointer;
+  }
+
   .container {
 	margin: auto;
-	padding-top: 4rem;
+	padding-top: 7rem;
 	padding-bottom: 1.5rem;
 	width: 90%;
 	min-height: 100px;
@@ -112,6 +148,10 @@
 	letter-spacing: 1px;
 	box-shadow: 1px -1px 3px rgba(0, 0, 0, 0.3);
   }
+
+  .tab:hover {
+	  cursor: pointer;
+  }
   
   #year-tab {
 	height: 35px;
@@ -164,87 +204,10 @@
   }
   
   * {
-	font-family: 'Caveat', cursive;
+	/* font-family: 'Caveat', cursive; */
 	color: #3d3d3d;
   }
   
-  #login-container {
-	display: -webkit-box;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-			flex-direction: column;
-	-webkit-box-pack: center;
-			justify-content: center;
-	padding-bottom: 2rem;
-	text-align: center;
-  }
-  #login-container h2 {
-	font-size: 2rem;
-	margin-bottom: 1rem;
-  }
-  #login-container form {
-	margin: auto;
-  }
-  
-  form input[type="text"], form input[type="email"], form input[type="password"] {
-	margin: .2rem;
-	min-width: 300px;
-	border: none;
-	border-bottom: 2px solid #003459;
-	background: rgba(0, 0, 0, 0);
-	min-height: 40px;
-	display: block;
-	position: relative;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
-  form input[type="text"]:hover, form input[type="text"]:focus, form input[type="email"]:hover, form input[type="email"]:focus, form input[type="password"]:hover, form input[type="password"]:focus {
-	border-bottom: 2px solid #007EA7;
-  }
-  
-  #new-user {
-	display: -webkit-box;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-			flex-direction: column;
-	-webkit-box-pack: center;
-			justify-content: center;
-	text-align: center;
-  }
-  #new-user h2 {
-	font-size: 2rem;
-	margin-bottom: 1rem;
-  }
-  #new-user form {
-	margin: auto;
-  }
-  
-  .btn {
-	display: block;
-	padding: .5rem 1.5rem;
-	color: red;
-	margin: .5rem auto;
-	background: #003459;
-	border: none;
-	color: #fff;
-	text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
-	font-size: 1.35rem;
-	-webkit-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-  }
-  .btn:hover {
-	background: #007EA7;
-	cursor: pointer;
-  }
+/* Everything below here should be moved to its own file */
 
-  .add-event-dayline {
-  	color: #003459;
-	font-size: 1rem;
-	padding-right: .5rem;
-  }
-
-  .add-event-dayline:hover {
-	cursor: pointer;
-  }
+  

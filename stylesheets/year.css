@@ -1,0 +1,12 @@
+#year-page-left > *, #year-page-right > * {
+    height: calc((100% / 6) - 1%);
+    margin-bottom: 1%;
+    border-bottom: 1px solid #cecece;
+  }
+  #year-page-left > :last-child, #year-page-right > :last-child {
+    border: none;
+  }
+  #year-page-left h3, #year-page-right h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }

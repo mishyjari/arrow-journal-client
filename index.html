@@ -4,8 +4,11 @@
 	<meta charset="UTF-8">
 	<title>Arrow Journal</title>
 
-	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=EB+Garamond:wght@400;700&family=Inconsolata:wght@400;700&family=Montserrat:ital,wght@0,400;1,600&family=Yellowtail&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type='text/css' href="stylesheets/reset.css">
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css' />
+	<link rel="stylesheet" type='text/css' href="stylesheets/login.css">
+	<link rel="stylesheet" type='text/css' href="stylesheets/year.css">
 
 	<script src='src/index.js' defer></script>
 	<script src='src/navigation.js' defer></script>
@@ -13,8 +16,22 @@
 	<script src='src/events.js' defer></script>
 	<script src='src/welcome.js' defer></script>
 	<script src='src/year.js' defer></script>
+	<script src="https://kit.fontawesome.com/96e37501bd.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="settings-toggle"><p>Settings <i class="fas fa-caret-down"></i></p>
+		<div class="settings-dropdown">
+			<label for="fonts">Choose a font:</label>
+			<select name="fonts" id="font-select">
+				<option value="">Select a font</option>
+				<option value="caveat">Caveat</option>
+				<option value="garamond">EB Garamond</option>
+				<option value="inconsolata">Inconsolata</option>
+				<option value="montserrat">Montserrat</option>
+				<option value="yellowtail">Yellowtail</option>
+			</select>
+		</div>
+	</div>
 
 	<div class="container">
 		<main id='journal-main'>
