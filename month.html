@@ -7,38 +7,68 @@
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css' />
 
-	<script src='src/index.js' defer></script>
-	<script src='src/navigation.js' defer></script>
-	<script src='src/welcome.js' defer></script>
-	<script src='src/year.js' defer></script>
+	<script src='src/index.js'></script>
 </head>
 <body>
 
 	<div class="container">
 		<main id='journal-main'>
 			<div class="tab-container">
+				<div class="tab" id="year-tab">year</div>
+				<div class="tab" id="month-tab">month</div>
+				<div class="tab" id="week-tab">week</div>
+				<div class="tab" id="day-tab">day</div>
+				<div class="tab" id="memo-tab">memos</div>
 			</div>
 			<div class="inner-container">
 				<section class="left">
-					<!-- left page spread -->
+					<div id="month-left">
+						<table id="month-list-days"></table>
+					</div>
 				</section>
 				<section class="right">
-					<!-- right page spread -->
+					<div id='new-event-container'>
+						<form id='new-event-form' action='POST'>
+							<label for="name">Event Name: </label>
+							<input type='text' class='text-field' name='name' placeholder='Event Name'>
+							<br />
+							<label for="location">Location: </label>
+							<input type='text' class='text-field' placeholder='Location (optional)'>
+							<br />
+							<table id='datetime-picker'>
+								<tr>
+									<td><label for="start">Start: </label></td>
+										<td><input type='time' name='start-time'></td>
+										<td><input type="date" name='start-date'></td>
+									</tr>
+									<tr>
+										<td><label for="end">End: </label></td>
+										<td><input type='time' name='end-time'></td>
+										<td><input type="date" name='end-date'></td>
+									<tr>
+										<td><input type='checkbox' id='all-day' name='all-day'></td>
+										<td><strong>All Day?</strong></td>
+									</tr>
+							</table>
+							<input type="submit" class='btn' value='Add Event'>
+							
+						</form>
+					</div>
 				</section>
 			</div>
 		</main>
-	</div>
+	</div>	
 </body>
 </html>
 
-<!--
+<!-- 
 <div id='journal-main'>
 	top level div to hold the background styles. This should not stay static, but evertyhing else will be nested inside
 	</div>
 
 	 Welcome page left spread.
 	 	Conditions:
-	 	- User not logged in: Show login form and button that will switch login form to signup form
+	 	- User not logged in: Show login form and button that will switch login form to signup form 
 	 	- User logged in, but has no journals: show the new journal form.
 	 	- User logged in and has journals:
 	 		- Welcome message for the user
@@ -110,8 +140,8 @@
 		</div>
 
 		Welcome page right spread.
-	 		- If user is logged in and has journal, display index, else display about / info page
-
+	 		- If user is logged in and has journal, display index, else display about / info page 
+	 	
 		<div id='index-page' class='page page-right'>
 			<div id='welcome-info'>
 				Show info about the app

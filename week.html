@@ -7,38 +7,70 @@
 	<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css' />
 
-	<script src='src/index.js' defer></script>
-	<script src='src/navigation.js' defer></script>
-	<script src='src/welcome.js' defer></script>
-	<script src='src/year.js' defer></script>
+	<script src='src/index.js'></script>
 </head>
 <body>
 
 	<div class="container">
 		<main id='journal-main'>
 			<div class="tab-container">
+				<div class="tab" id="year-tab">year</div>
+				<div class="tab" id="month-tab">month</div>
+				<div class="tab" id="week-tab">week</div>
+				<div class="tab" id="day-tab">day</div>
+				<div class="tab" id="memo-tab">memos</div>
 			</div>
 			<div class="inner-container">
 				<section class="left">
-					<!-- left page spread -->
+				<!-- Login Form -->
+					<div id="login-container">
+						<h2>Sign In</h2>
+						<form id="login-form" action="#">
+							<input type='text' name='username-or-email' placeholder='Username or Email'>
+							<br />
+							<input type='password' name='password' class='text-field' placeholder='Password' />
+							<br />
+							<input type='submit' id='login' class='submit btn' value='login'>
+						</form>
+					</div>
+	
+					<!-- Form to create new user -->
+					<div id='new-user'>
+						<h2>New User?</h2>
+						<form id='new-user-form' action='#' method='POST'>
+							<input type='text' name='firstname' class='text-field' placeholder='First Name' />
+							<br />
+							<input type='text' name='lastname' class='text-field' placeholder='Last Name' />
+							<br />
+							<input type='text' name='username' class='text-field' placeholder='Create Username' />
+							<br />
+							<input type='email' name='email' class='text-field' placeholder='Email Address' />
+							<br />
+							<input type='password' name='password' class='text-field' placeholder='Password' />
+							<br />
+							<input type='password' name='confirm-password' class='text-field' placeholder='Confirm Password' />
+							<br />
+							<input type='submit' class='submit btn' id='submit-new-user' value='Create Account' />
+						</form>
+					</div>
 				</section>
 				<section class="right">
-					<!-- right page spread -->
+					blah
 				</section>
 			</div>
 		</main>
-	</div>
+	</div>	
 </body>
 </html>
 
-<!--
+<!-- 
 <div id='journal-main'>
 	top level div to hold the background styles. This should not stay static, but evertyhing else will be nested inside
 	</div>
 
 	 Welcome page left spread.
 	 	Conditions:
-	 	- User not logged in: Show login form and button that will switch login form to signup form
+	 	- User not logged in: Show login form and button that will switch login form to signup form 
 	 	- User logged in, but has no journals: show the new journal form.
 	 	- User logged in and has journals:
 	 		- Welcome message for the user
@@ -110,8 +142,8 @@
 		</div>
 
 		Welcome page right spread.
-	 		- If user is logged in and has journal, display index, else display about / info page
-
+	 		- If user is logged in and has journal, display index, else display about / info page 
+	 	
 		<div id='index-page' class='page page-right'>
 			<div id='welcome-info'>
 				Show info about the app
