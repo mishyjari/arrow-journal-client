@@ -19,10 +19,16 @@ const populateRightTabs = () => {
       console.log('Switch to year view')
     }
     else if (tabId === 'month-tab'){
-      console.log('switch to month tab')
+      clearPages();
+
+      let d = new Date(); // Get rid of this!
+      renderMonthPage(d)
     }
     else if (tabId === 'week-tab'){
       console.log('switch to week tab')
+      clearPages();
+
+      renderWeekPage(new Date())
     }
     else if (tabId === 'day-tab'){
       clearPages();
