@@ -6,6 +6,24 @@ const _HEADERS = {
 document.addEventListener("DOMContentLoaded", () => {
 	populateRightTabs();
 	renderWelcomePublic();
+	
+	const fontSelect = document.querySelector("#font-select");
+	const body = document.querySelector('body');
+
+	fontSelect.addEventListener('change', (e) => {
+		if (e.target.value === "caveat") {
+			body.style.fontFamily = "Caveat,cursive";
+		}	else if (e.target.value === "garamond") {
+			body.style.fontFamily = "EB Garamond,serif";
+		} else if (e.target.value === "inconsolata") {
+			body.style.fontFamily = "'Inconsolata', monospace";
+		} else if (e.target.value === "montserrat") {
+			body.style.fontFamily = "'Montserrat', sans-serif";
+		} else if (e.target.value === "yellowtail") {
+			body.style.fontFamily = "'Yellowtail', cursive";
+		}
+	});
+
 })
 
 /* document.addEventListener('DOMContentLoaded', () => {
