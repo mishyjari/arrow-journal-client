@@ -90,7 +90,7 @@ const renderAboutPage = () => {
       <li>Do something lame</li>
     </ul>
     <p>Feel free to play around using the tabs up top.</p>
-    <p>And if you'd like to save your jornal, use the sign up form on the left!</p>
+    <p>And if you'd like to save your journal, use the sign up form on the left!</p>
   `;
 
   rightPage.appendChild(about);

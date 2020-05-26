@@ -68,3 +68,32 @@
 	background: #007EA7;
 	cursor: pointer;
   }
+
+  /* About Page */
+  
+  #welcome-about h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+  }
+
+  #welcome-about p {
+      margin-bottom: 1rem;
+  }
+
+  #welcome-about ul {
+      margin-bottom: 1rem;
+  }
+
+  #welcome-about li {
+	list-style: none;
+    margin-left: 2em;
+    margin-bottom: .65rem;
+}
+
+#welcome-about li:before {
+	content: '\f14b';
+	margin-left: -1.5em;
+	font-family: 'FontAwesome';
+    float: left;
+    color: #003459;
+}
