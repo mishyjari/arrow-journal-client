@@ -69,7 +69,7 @@ const renderMonthPage = d => {
     dayLine['data-day'] = day;
 
     dayLine.innerHTML = `
-      <td class='add-event-dayline'><strong>+</td>
+      <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></td>
       <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td> |
       <td id='dayline-${day.toLocaleDateString()}'><!-- this is for listing events --></td>
     `;
