@@ -12,3 +12,28 @@
     font-size: 1.4rem;
     font-weight: 700;
 }
+
+#week-left .day-inner-container, #week-right .day-inner-container {
+    display: flex;
+}
+
+.event-cell, .task-cell {
+    margin-top: .5rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+    min-height: 147px;
+}
+
+.event-cell h4, .task-cell h4 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+#week-left .event-cell, #week-right .event-cell {
+    flex-basis: 50%;
+    border-right: 1px solid #cecece;
+}
+
+#week-left .task-cell, #week-right .task-cell {
+    flex-basis: 50%;
+}

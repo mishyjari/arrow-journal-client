@@ -2,6 +2,7 @@
 const populateRightTabs = () => {
   const rightTabContainer = document.querySelector("div[class='tab-container']");
   rightTabContainer.innerHTML = `
+  <div class="tab active-page" id="welcome-tab">welcome</div>
     <div class="tab" id="year-tab">year</div>
     <div class="tab" id="month-tab">month</div>
     <div class="tab" id="week-tab">week</div>
@@ -36,9 +37,12 @@ tabs.addEventListener('click', (e) => {
     renderMonthPage(activeDate);
   } else if (e.target.id === "week-tab") {
     e.target.style.height = "66px"
+    e.target.style.bottom = "-25px"
+  } else if (e.target.id === "week-tab") {
+    e.target.style.height = "69px"
     e.target.style.bottom = "-26px"
   } else if (e.target.id === "memo-tab") {
-    e.target.style.height = "69px"
+    e.target.style.height = "72px"
     e.target.style.bottom = "-25px"
 
     renderMemoPage(activeDate);
