@@ -231,3 +231,29 @@ div.tab.active-page {
 	z-index: 20 !important;
 	transition: all .2s ease-in-out;
 }
+
+/* arrow left and right styling */
+.arrow-left i, .arrow-right i {
+	font-size: 1.75rem;
+	transition: all .2s ease-in-out;
+	color: #003459;
+}
+
+.arrow-left i:hover, .arrow-right i:hover {
+	color: #007EA7;
+	cursor: pointer;
+}
+
+
+
+.arrow-left {
+	position: absolute;
+	left: 20px;
+	bottom: 10px;
+}
+
+.arrow-right {
+	position: absolute;
+	right: 20px;
+	bottom: 10px;
+}
