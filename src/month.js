@@ -6,6 +6,7 @@ const renderNewEventForm = d => {
   const newEventFormContainer = document.createElement('div');
   newEventFormContainer.innerHTML = `
     <div id='new-event-container'>
+      <h2>New Event</h2>
       <form id='new-event-form' action='POST'>
         <label for="name">Event Name: </label>
         <input type='text' class='text-field' name='name' placeholder='Event Name'>
@@ -41,7 +42,9 @@ const renderNewEventForm = d => {
 
 const renderMonthPage = d => {
   const leftPage = document.querySelector("section[class='left']");
+  leftPage.id = "month-left"
   const rightPage = document.querySelector("section[class='right']");
+  rightPage.id = "month-right"
 
   clearPages();
 
@@ -69,10 +72,11 @@ const renderMonthPage = d => {
     dayLine['data-day'] = day;
 
     dayLine.innerHTML = `
-      <td class='add-event-dayline'><strong>+</td>
-      <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td> |
+      <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></td>
+      <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td>
       <td><!-- this is for day stats --></td>
       <td'><!-- this is for listing events --></td>
+
     `;
 
     monthTable.appendChild(dayLine);
@@ -85,4 +89,17 @@ const renderMonthPage = d => {
 
   leftPage.appendChild(monthTable);
   rightPage.appendChild(renderNewEventForm())
+
+  monthTable.addEventListener('click', (e) => {
+    
+    if (e.target.tagName === "I") {
+      const tableRow = e.target.parentNode.parentNode.parentNode
+      const dateText = (tableRow.childNodes[3].textContent)
+      const dateArr = dateText.split(" ")
+      //Date num to pass to form. Might be a better way to do this
+      const dateNum = parseInt(dateArr[0])
+      console.log(dateNum)
+    }
+  });
+
 };

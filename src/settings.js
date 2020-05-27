@@ -18,10 +18,26 @@ const renderSettingsTab = () => {
   const fontSelect = document.querySelector("#font-select");
   const body = document.querySelector('body');
 
+  //Set settings dropdown to their respective font style. There is no way to style these in Chrome/Safari: https://css-tricks.com/dropdown-default-styling/
+  const caveatOption = fontSelect.querySelector('option:nth-child(2)');
+  caveatOption.style.fontFamily = "Caveat,cursive";
+
+  const garamondOption = fontSelect.querySelector('option:nth-child(3)');
+  garamondOption.style.fontFamily = "EB Garamond,serif";
+
+  const inconsolataOption = fontSelect.querySelector('option:nth-child(4)');
+  inconsolataOption.style.fontFamily = "'Inconsolata', monospace";
+
+  const montserratOption = fontSelect.querySelector('option:nth-child(5)');
+  montserratOption.style.fontFamily = "'Montserrat', sans-serif";
+
+  const yellowtailOption = fontSelect.querySelector('option:nth-child(6)');
+  yellowtailOption.style.fontFamily = "'Yellowtail', cursive";
+
+
   fontSelect.addEventListener('change', (e) => {
     const inputs = document.querySelectorAll('input');
     const inputArr = Array.from(inputs);
-    console.log(inputArr)
 
     if (e.target.value === "caveat") {
       body.style.fontFamily = "Caveat,cursive";

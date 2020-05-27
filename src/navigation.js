@@ -5,9 +5,10 @@ const populateRightTabs = () => {
     <div class="tab" id="year-tab">year</div>
     <div class="tab" id="month-tab">month</div>
     <div class="tab" id="week-tab">week</div>
-    <div class="tab" id="day-tab">day</div>
     <div class="tab" id="memo-tab">memos</div>
   `;
+// <div class="tab" id="day-tab">day</div>
+
 
   // Click Event Listeners for Tabs
   rightTabContainer.addEventListener('click', e => {

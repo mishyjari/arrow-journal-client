@@ -1,0 +1,56 @@
+#month-left table {
+    height: 100%;
+}
+
+#month-left table tr {
+    line-height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 2%;
+}
+
+#month-left table i {
+    margin-right: .5rem;
+    color: #003459;
+    transition: all .2s ease-in-out;
+    position: relative;
+}
+
+/* #month-left table i:hover::before {
+    content: 'Add Event';
+    position: absolute;
+    background: #003459;
+    color: #f7f7f7;
+    min-width: 120px;
+    min-height: 30px;
+    line-height: 30px;
+    text-align: center;
+    left: 0;
+    top: 0;
+} */
+
+#month-left table i:hover {
+    cursor: pointer;
+}
+
+#month-right form {
+    margin: auto;
+    text-align: center;
+}
+
+#month-right form > * {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#month-right h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#month-right form td {
+    padding-bottom: 1rem;
+}

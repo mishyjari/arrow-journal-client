@@ -190,7 +190,7 @@
 	z-index: 7;
   }
   
-  #day-tab {
+  #memo-tab {
 	height: 44px;
 	line-height: 44px;
 	position: absolute;
@@ -200,7 +200,7 @@
 	z-index: 6;
   }
   
-  #memo-tab {
+  /* #memo-tab {
 	height: 47px;
 	line-height: 47px;
 	position: absolute;
@@ -208,7 +208,7 @@
 	bottom: 0;
 	background: #00A8E8;
 	z-index: 5;
-  }
+  } */
   
   * {
 	/* font-family: 'Caveat', cursive; */

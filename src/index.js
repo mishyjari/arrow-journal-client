@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	if( activeSession() ){
 		renderWelcomePagePrivate(currentUser)
 	} else {
-		renderWelcomePublic();
+		// renderWelcomePublic();
 	}
 
 	renderSettingsTab();
