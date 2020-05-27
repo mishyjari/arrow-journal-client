@@ -50,3 +50,38 @@ const clearPages = () => {
   document.querySelector("section[class='left']").innerHTML = '';
   document.querySelector("section[class='right']").innerHTML = '';
 }
+
+
+//tab navigation dynamic switching
+const tabs = document.querySelector('.tab-container')
+
+tabs.addEventListener('click', (e) => {
+	const tabCollection = tabs.getElementsByClassName("tab")
+	// console.log(tabCollection)
+	const tabArr = Array.from(tabCollection)
+	// removes active page class from all tabs so you can set a new one on click
+	for (let i = 0; i < tabArr.length; i++) {
+		tabArr[i].className = "tab"
+    tabArr[i].style.zIndex = null
+    tabArr[i].style.height = null
+    tabArr[i].style.bottom = null
+  }
+  
+  if (e.target.id === "year-tab") {
+    e.target.style.height = "60px"
+    e.target.style.bottom = "-25px"
+  } else if (e.target.id === "month-tab") {
+    e.target.style.height = "63px"
+    e.target.style.bottom = "-25px"
+  } else if (e.target.id === "week-tab") {
+    e.target.style.height = "66px"
+    e.target.style.bottom = "-26px"
+  } else if (e.target.id === "memo-tab") {
+    e.target.style.height = "69px"
+    e.target.style.bottom = "-25px"
+  }
+	
+	if (e.target.className === "tab") {
+			e.target.classList.add("active-page")
+		 }
+})
