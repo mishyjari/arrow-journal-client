@@ -2,12 +2,12 @@
 const populateRightTabs = () => {
   const rightTabContainer = document.querySelector("div[class='tab-container']");
   rightTabContainer.innerHTML = `
+  <div class="tab active-page" id="welcome-tab">welcome</div>
     <div class="tab" id="year-tab">year</div>
     <div class="tab" id="month-tab">month</div>
     <div class="tab" id="week-tab">week</div>
     <div class="tab" id="memo-tab">memos</div>
   `;
-// <div class="tab" id="day-tab">day</div>
 
 
   // Click Event Listeners for Tabs
@@ -41,8 +41,17 @@ const populateRightTabs = () => {
     }
     else {
       console.log('maybe add a home/welcome tab?')
+      clearPages();
+      renderWelcomePublic();
+      const leftPage = document.querySelector('section.left')
+      leftPage.id = null
     }
   });
+
+  //add styling on load for welcome page
+  const welcomeTab = document.querySelector('#welcome-tab');
+  welcomeTab.style.height = "60px";
+  welcomeTab.style.bottom = "-25px";
 };
 
 // Clear pages (called befoe rendering new content)
@@ -67,17 +76,20 @@ tabs.addEventListener('click', (e) => {
     tabArr[i].style.bottom = null
   }
   
-  if (e.target.id === "year-tab") {
+  if (e.target.id === "welcome-tab") {
     e.target.style.height = "60px"
     e.target.style.bottom = "-25px"
-  } else if (e.target.id === "month-tab") {
+  } else if (e.target.id === "year-tab") {
     e.target.style.height = "63px"
     e.target.style.bottom = "-25px"
-  } else if (e.target.id === "week-tab") {
+  } else if (e.target.id === "month-tab") {
     e.target.style.height = "66px"
+    e.target.style.bottom = "-25px"
+  } else if (e.target.id === "week-tab") {
+    e.target.style.height = "69px"
     e.target.style.bottom = "-26px"
   } else if (e.target.id === "memo-tab") {
-    e.target.style.height = "69px"
+    e.target.style.height = "72px"
     e.target.style.bottom = "-25px"
   }
 	

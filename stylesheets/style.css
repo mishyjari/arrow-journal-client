@@ -161,7 +161,7 @@
 	  cursor: pointer;
   }
 
-  #year-tab {
+  #welcome-tab {
 	height: 35px;
 	line-height: 35px;
 	position: absolute;
@@ -171,7 +171,7 @@
 	z-index: 9;
   }
 
-  #month-tab {
+  #year-tab {
 	height: 38px;
 	line-height: 38px;
 	position: absolute;
@@ -181,7 +181,7 @@
 	z-index: 8;
   }
 
-  #week-tab {
+  #month-tab {
 	height: 41px;
 	line-height: 41px;
 	position: absolute;
@@ -191,7 +191,7 @@
 	z-index: 7;
   }
 
-  #memo-tab {
+  #week-tab {
 	height: 44px;
 	line-height: 44px;
 	position: absolute;
@@ -201,7 +201,7 @@
 	z-index: 6;
   }
 
-  /* #memo-tab {
+  #memo-tab {
 	height: 47px;
 	line-height: 47px;
 	position: absolute;
@@ -209,7 +209,7 @@
 	bottom: 0;
 	background: #00A8E8;
 	z-index: 5;
-  } */
+  }
 
   * {
 	/* font-family: 'Caveat', cursive; */
