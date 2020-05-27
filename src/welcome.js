@@ -14,19 +14,20 @@ const user = {
   email: 'shelle@mishyjari.com',
 };
 
-const leftPage = document.querySelector("section[class='left']");
-const rightPage = document.querySelector("section[class='right']");
+
 
 // Render Sign-In / Registration Forms
 const renderWelcomePublic = () => {
+
   renderLoginForm();
   renderNewUserForm();
   renderAboutPage();
 };
 
 // Render welcome page if user session exists
-const renderWelcomePagePrivate = userId => {
-  leftPage.innerHTML = 'logged in as ' + userId;
+const renderWelcomePagePrivate = user => {
+
+  leftPage.innerHTML = 'logged in as ' + user.username;
 };
 
 // Forms for public (not logged in) welcome spread
@@ -70,14 +71,12 @@ const renderLoginForm = () => {
     .then( res => res.json() )
     .then( user => {
       // This is not secure. Don't do this. We will get back to secure sessions if theres time.
-      document.cookie = `user=${user.id}`
-      clearPages()
-      renderWelcomePagePrivate(user.id)
+      createSession(user.id)
+      renderWelcomePagePrivate(user)
     })
     .catch(err => {
-
       renderWelcomePublic();
-      loginContainer.querySelector('h2').innerHTML = 'Invalid Credentials!'
+      leftPage.querySelector('h2').innerHTML = 'Invalid Credentials!'
       // Kicking a JSON.parse error on invalid entries. Lets handle this better!
       console.log("Error in login: " + err)
     })

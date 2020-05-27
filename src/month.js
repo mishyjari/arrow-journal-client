@@ -1,9 +1,9 @@
 
 
 const renderMonthPage = d => {
-  const leftPage = document.querySelector("section[class='left']");
+  clearPages();
+
   leftPage.id = "month-left"
-  const rightPage = document.querySelector("section[class='right']");
   rightPage.id = "month-right"
 
   clearPages();
@@ -22,6 +22,14 @@ const renderMonthPage = d => {
   };
 
   const monthTable = document.createElement('table');
+
+  monthTable.innerHTML = `
+    <tr>
+      <th></th>
+      <th><h3>${d.toLocaleDateString('en-US',{month: "long", year: "numeric"})}</h3></th>
+    </tr>
+  `;
+
   const days = getDaysInMonth(d);
 
   days.forEach(day => {
@@ -48,11 +56,11 @@ const renderMonthPage = d => {
     getEvents(ev => {
       const dayLine = document.getElementById(`dayline-${ev.start_date.toLocaleDateString()}`);
       if ( dayLine && ev.start_date.getMonth() === d.getMonth() ){
-        dayLine.textContent = ev.name;
+        dayLine.textContent += ev.name;
       }
     })
   });
-  
+
   leftPage.appendChild(monthTable);
   renderNewEventForm(rightPage);
 

@@ -35,10 +35,10 @@ const createMonthCell = dateObject => {
 
 // Take an array of date objects and append a cell for each, six per page
 const populateYear = monthsArray => {
-  const leftPage = document.querySelector("section[class='left']");
+  clearPages();
+
   leftPage.id = 'year-page-left';
-  const rightPage = document.querySelector("section[class='right']");
-  rightPage.id = 'year-page-right'
+  rightPage.id = 'year-page-right';
 
   while (monthsArray.length > 6) {
     leftPage.appendChild(

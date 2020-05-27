@@ -1,8 +1,6 @@
 const renderWeekPage = d => {
 
-  const leftPage = document.querySelector("section[class='left']");
   leftPage.id = "week-left"
-  const rightPage = document.querySelector("section[class='right']");
   rightPage.id = "week-right"
 
   leftPage.innerHTML = `

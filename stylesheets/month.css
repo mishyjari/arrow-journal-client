@@ -1,5 +1,6 @@
 #month-left table {
     height: 100%;
+
 }
 
 #month-left table tr {
@@ -8,7 +9,6 @@
     padding-bottom: 0;
     margin-top: 0;
     margin-bottom: 0;
-    height: 2%;
 }
 
 #month-left table i {
@@ -53,4 +53,8 @@
 
 #month-right form td {
     padding-bottom: 1rem;
+}
+
+td {
+  overflow: hidden;
 }

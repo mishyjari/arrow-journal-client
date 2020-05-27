@@ -3,29 +3,39 @@ const _HEADERS = {
 	"Accept": "application/json"
 };
 
+// Use this variable to store the date object from the most recently rendered page
+// That way we can increment consistently
+let activeDate = new Date();
+
+const leftPage = document.querySelector("section[class='left']");
+const rightPage = document.querySelector("section[class='right']");
+
+// Clear pages (called befoe rendering new content)
+const clearPages = () => {
+  leftPage.innerHTML = '';
+  rightPage.innerHTML = '';
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-
-	// A terrible way of handling session cookies. Dont do this.
-	const activeSession = () => {
-		const session = document.cookie;
-		if( session.includes('user=') ){
-			return session.split('=')[1]
-		} else {
-			return false;
-		}
-	};
-
-	const currentUser = activeSession();
-
-	if( activeSession() ){
-		renderWelcomePagePrivate(currentUser)
-	} else {
-		// renderWelcomePublic();
-	}
 
 	renderSettingsTab();
 	populateRightTabs();
-	renderWelcomePublic();
+
+	// A terrible way of handling session cookies. Dont do this.
+
+	const currentUserId = getActiveUserId();
+
+	if( currentUserId ){
+		fetch(`http://localhost:3000/users/${currentUserId}`)
+		.then( res => res.json() )
+		.then( user => renderWelcomePagePrivate(user) )
+		.catch( err => console.log(`Error fetching user with id #${currentUserId}: ${err}`))
+	} else {
+		renderWelcomePublic();
+	}
+
+
+
 
 
 })
