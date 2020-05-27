@@ -9,7 +9,7 @@
 * {
 	box-sizing: border-box;
   }
-  
+
   body {
 	background: -webkit-gradient(linear, left top, right top, from(#003459), to(#007EA7));
 	background: linear-gradient(to right, #003459, #007EA7);
@@ -22,7 +22,7 @@
 	button:focus {
     outline: none;
 }
-  
+
   .settings-toggle {
 	position: absolute;
 	background: #003459;
@@ -41,19 +41,19 @@
   .settings-toggle p {
 	margin-bottom: 1rem;
   }
-  
+
   .settings-toggle .settings-dropdown {
 	height: 0;
 	overflow: hidden;
 	-webkit-transition: all .3s;
 	transition: all .3s;
   }
-  
+
   .settings-toggle:hover .settings-dropdown {
 	height: 100%;
 	padding-bottom: .75rem;
   }
-  
+
   #font-select:hover {
 	cursor: pointer;
   }
@@ -67,7 +67,7 @@
 	min-width: 1300px;
 	max-width: 1350px;
   }
-  
+
   header {
 	text-align: center;
 	padding: 2rem 0;
@@ -78,7 +78,7 @@
   header h1 {
 	font-size: 2.5rem;
   }
-  
+
   main {
 	margin-top: 1.5rem;
 	background: #fff;
@@ -112,7 +112,7 @@
 	width: 4em;
 	z-index: 1;
   }
-  
+
   .inner-container {
 	display: -webkit-box;
 	display: flex;
@@ -132,7 +132,7 @@
 	margin-left: 3rem;
 	flex-basis: calc(50%);
   }
-  
+
   .tab-container {
 	content: '';
 	min-height: 50px;
@@ -142,7 +142,7 @@
 	right: 3%;
 	border-bottom: 1px solid #2f2f2f;
   }
-  
+
   .tab {
 	display: inline-block;
 	-webkit-transform: 50%;
@@ -160,7 +160,7 @@
   .tab:hover {
 	  cursor: pointer;
   }
-  
+
   #year-tab {
 	height: 35px;
 	line-height: 35px;
@@ -170,7 +170,7 @@
 	background: #007EA7;
 	z-index: 9;
   }
-  
+
   #month-tab {
 	height: 38px;
 	line-height: 38px;
@@ -180,7 +180,7 @@
 	background: #00A8E8;
 	z-index: 8;
   }
-  
+
   #week-tab {
 	height: 41px;
 	line-height: 41px;
@@ -190,7 +190,7 @@
 	background: #003459;
 	z-index: 7;
   }
-  
+
   #memo-tab {
 	height: 44px;
 	line-height: 44px;
@@ -199,11 +199,6 @@
 	bottom: 0;
 	background: #007EA7;
 	z-index: 6;
-  }
-  
-  div.tab.active-page {
-	  z-index: 20 !important;
-	  transition: all .2s ease-in-out;
   }
 
   /* #memo-tab {
@@ -215,12 +210,24 @@
 	background: #00A8E8;
 	z-index: 5;
   } */
-  
+
   * {
 	/* font-family: 'Caveat', cursive; */
 	color: #3d3d3d;
   }
-  
+
 /* Everything below here should be moved to its own file */
 
-  
+.clickable {
+	color: #003459;
+	text-decoration: underline;
+}
+
+.clickable:hover {
+	cursor: pointer;
+}
+
+div.tab.active-page {
+	z-index: 20 !important;
+	transition: all .2s ease-in-out;
+}
