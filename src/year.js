@@ -1,33 +1,35 @@
 // Return an array of twelve months
 // If passed an arg (string) for year, will return jan-dec of that year
 // Else will return 12 months beginning with current month
-const getMonths = year => {
-  let d;
-  year ? d = new Date(year,0) : d = new Date();
+const getMonths = d => {
+  // Create new date (today) if date not passed in
+  d ? d = new Date(year,0) : d = new Date();
   d.setDate(1);
 
+  // Push date and iterate month 12 times
   const months = [];
   while( months.length < 12 ){
     months.push(d)
     d = new Date(d.getFullYear(), d.getMonth() + 1)
   };
-  return months;
+return months;
 }
 
 // Create monthly cell for yearly overviews
 const createMonthCell = dateObject => {
-  const events = [];
 
+  // Display heading MonthName - Full Year
   const monthString = dateObject.toLocaleDateString('en-US',
     {month: "long", year: "numeric"});
 
+  // Create and return div for this month
   const monthCell = document.createElement('div');
-  monthCell.className = 'month-cell';
-  monthCell.id = `month-cell-${dateObject.getFullYear()}-${dateObject.getMonth()}`
-  monthCell.innerHTML = `
-    <h3>${monthString}</h3>
-    <ul class='month-cell-list'></ul>
-  `;
+    monthCell.className = 'month-cell';
+    monthCell.id = `month-cell-${dateObject.getFullYear()}-${dateObject.getMonth()}`
+    monthCell.innerHTML = `
+        <h3>${monthString}</h3>
+        <ul class='month-cell-list'></ul>
+        `;
   return monthCell;
 };
 
