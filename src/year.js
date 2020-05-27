@@ -16,21 +16,18 @@ const getMonths = year => {
 
 // Create monthly cell for yearly overviews
 const createMonthCell = dateObject => {
+  const events = [];
+
   const monthString = dateObject.toLocaleDateString('en-US',
     {month: "long", year: "numeric"});
 
   const monthCell = document.createElement('div');
   monthCell.className = 'month-cell';
-
+  monthCell.id = `month-cell-${dateObject.getFullYear()}-${dateObject.getMonth()}`
   monthCell.innerHTML = `
     <h3>${monthString}</h3>
     <ul class='month-cell-list'></ul>
-    
   `;
-
-  // Get the month cell ul and append events as li
-
-
   return monthCell;
 };
 
@@ -53,4 +50,18 @@ const populateYear = monthsArray => {
         monthsArray.shift()
       ));
   };
+
+  // Fetch events and populate
+  getEvents(ev => {
+    const y = ev.start_date.getFullYear();
+    const m = ev.start_date.getMonth();
+    const cell = document.getElementById(`month-cell-${y}-${m}`)
+
+    // Ignore events out of date range
+    if (cell) {
+      const eventLi = document.createElement('li');
+      eventLi.textContent = ev.name;
+      cell.appendChild(eventLi)
+    }
+  })
 };

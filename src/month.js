@@ -38,7 +38,7 @@ const renderNewEventForm = d => {
   // Populate fields with info from date obj
 
   return newEventFormContainer;
-}
+};
 
 const renderMonthPage = d => {
   const leftPage = document.querySelector("section[class='left']");
@@ -61,24 +61,18 @@ const renderMonthPage = d => {
     return days;
   };
 
-
   const monthTable = document.createElement('table');
-
   const days = getDaysInMonth(d);
 
   days.forEach(day => {
-
     const dayLine = document.createElement('tr');
     dayLine['data-day'] = day;
 
     dayLine.innerHTML = `
-      <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></td>
-      <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td>
-      <td><!-- this is for day stats --></td>
-      <td'><!-- this is for listing events --></td>
-
+      <td class='add-event-dayline'><strong>+</td>
+      <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td> |
+      <td id='dayline-${day.toLocaleDateString()}'><!-- this is for listing events --></td>
     `;
-
     monthTable.appendChild(dayLine);
 
     dayLine.querySelector("td[class='add-event-dayline']").addEventListener('click', e => {
@@ -86,6 +80,13 @@ const renderMonthPage = d => {
       newEventForm['start-day'].value = day;
     });
   });
+
+  getEvents(ev => {
+    const dayLine = document.getElementById(`dayline-${ev.start_date.toLocaleDateString()}`);
+    if ( dayLine && ev.start_date.getMonth() === d.getMonth() ){
+      dayLine.textContent = ev.name;
+    }
+  })
 
   leftPage.appendChild(monthTable);
   rightPage.appendChild(renderNewEventForm())
