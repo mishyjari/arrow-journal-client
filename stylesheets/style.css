@@ -14,6 +14,7 @@
 	background: -webkit-gradient(linear, left top, right top, from(#003459), to(#007EA7));
 	background: linear-gradient(to right, #003459, #007EA7);
 	margin-top: 0;
+	font-family: "Caveat", "cursive";
   }
 
   input:focus,

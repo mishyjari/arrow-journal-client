@@ -7,8 +7,6 @@ class Event {
   }
 }
 
-
-
 // Will fetch all events, takes a function as an argument to dictate what to do with response.
 // This should be updated to fetch all of a given journal's events, rather than the whole shebang!
 const getEvents = method => {
@@ -88,7 +86,7 @@ const renderNewEventForm = parentNode => {
         location: location,
         start_date: start_date,
         end_date: end_date,
-        journal_id: JSON.parse(sessionStorage.user).journal.id
+
       })
     };
 
@@ -113,7 +111,6 @@ const renderNewEventForm = parentNode => {
               break;
           }
         },100)
-    })
-
+    });
   });
 };

@@ -1,5 +1,3 @@
-
-
 const renderMonthPage = d => {
 
   clearPages();
@@ -29,13 +27,6 @@ const renderMonthPage = d => {
    const dayList = document.createElement('ul');
    leftPage.appendChild(dayList);
 
-  // monthTable.innerHTML = `
-  //   <tr>
-  //     <th></th>
-  //     <th><h3>${d.toLocaleDateString('en-US',{month: "long", year: "numeric"})}</h3></th>
-  //   </tr>
-  // `;
-
   const days = getDaysInMonth(d);
 
   days.forEach(day => {
@@ -64,13 +55,19 @@ const renderMonthPage = d => {
     dayList.appendChild(dayLine);
 
     dayLine.querySelector("i[title='Add Event']").addEventListener('click', e => {
+      // Add Event form
       const newEventForm = document.getElementById('new-event-form');
-      console.log(day)
       document.getElementById('new-event-container').className = 'show'
       newEventForm['start-date'].valueAsDate = day;
       newEventForm['end-date'].valueAsDate = day;
       newEventForm['start-time'].value = '12:00'
       newEventForm['end-time'].value = '13:00';
+      // Add Task form
+      const newTaskForm = document.getElementById('new-task-form');
+      document.getElementById('new-task-container').className = 'show';
+
+      newTaskForm.date.valueAsDate = day;
+
     });
 
     getEvents(ev => {
@@ -78,6 +75,7 @@ const renderMonthPage = d => {
       const dayLine = document.getElementById(`dayline-${start}`);
       if ( dayLine && start === day.toLocaleDateString() ){
         const eventItem = document.createElement('span')
+        eventItem.className = 'event-item'
         eventItem.textContent = ev.name
         dayLine.querySelector("span[class='daily-content-container']").prepend(eventItem)
       }
@@ -86,6 +84,7 @@ const renderMonthPage = d => {
 
   // leftPage.appendChild(monthTable);
   renderNewEventForm(rightPage);
+  renderNewTaskForm(rightPage);
 
   document.querySelector("strong[class='clickable']").addEventListener('click', e => {
     const newEventForm = document.getElementById('new-event-form');
