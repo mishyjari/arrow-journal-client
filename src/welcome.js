@@ -6,19 +6,10 @@
 // => List of todays tasks/events, plus outstanding tasks
 // => Build out index page (but maybe this should be its own file)
 
-// Hard code a user for testing purposes
-const user = {
-  username: 'shelle',
-  first_name: 'Mishy',
-  last_name: 'Jari',
-  email: 'shelle@mishyjari.com',
-};
-
-
 
 // Render Sign-In / Registration Forms
 const renderWelcomePublic = () => {
-
+  clearPages()
   renderLoginForm();
   renderNewUserForm();
   renderAboutPage();
@@ -26,6 +17,7 @@ const renderWelcomePublic = () => {
 
 // Render welcome page if user session exists
 const renderWelcomePagePrivate = user => {
+  clearPages();
 
   leftPage.innerHTML = 'logged in as ' + user.username;
 };
