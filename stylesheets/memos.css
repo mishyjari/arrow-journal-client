@@ -1,0 +1,21 @@
+#memo-page-left h2, #memo-page-right h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#memo-page-left .journal-entry, #memo-page-right .journal-entry {
+    margin-bottom: 1rem;
+}
+
+#memo-page-left .journal-entry p, #memo-page-right .journal-entry p {
+    line-height: 1.6;
+}
+
+#memo-page-left span, #memo-page-right span {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: .25rem;
+    font-size: 1.3rem;
+    text-decoration: underline;
+}

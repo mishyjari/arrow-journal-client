@@ -32,8 +32,8 @@ tabs.addEventListener('click', (e) => {
   }
 
   if (e.target.id === "welcome-tab") {
-    e.target.style.height = "60px"
-    e.target.style.bottom = "-25px"
+    e.target.style.height = "55px"
+    e.target.style.bottom = "-20px"
 
     updatePageIds('welcome-page');
 
@@ -41,29 +41,29 @@ tabs.addEventListener('click', (e) => {
       renderWelcomePublic()
 
   } else if (e.target.id === "year-tab") {
-    e.target.style.height = "60px"
-    e.target.style.bottom = "-25px"
+    e.target.style.height = "58px"
+    e.target.style.bottom = "-20px"
 
     updatePageIds('year-page');
 
     renderYearPage(activeDate);
   } else if (e.target.id === "month-tab") {
-    e.target.style.height = "63px"
-    e.target.style.bottom = "-25px"
+    e.target.style.height = "61px"
+    e.target.style.bottom = "-20px"
 
     updatePageIds('month-page');
 
     renderMonthPage(activeDate);
   } else if (e.target.id === "week-tab") {
-    e.target.style.height = "66px"
-    e.target.style.bottom = "-25px"
+    e.target.style.height = "64px"
+    e.target.style.bottom = "-20px"
 
     updatePageIds('week-page');
 
     renderWeekPage(activeDate)
   } else if (e.target.id === "memo-tab") {
-    e.target.style.height = "72px"
-    e.target.style.bottom = "-25px"
+    e.target.style.height = "67px"
+    e.target.style.bottom = "-20px"
 
     updatePageIds('memo-page');
 
