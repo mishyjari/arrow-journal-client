@@ -26,16 +26,8 @@ const createMonthCell = dateObject => {
     monthCell.id = `month-cell-${dateObject.getFullYear()}-${dateObject.getMonth()}`
     monthCell.innerHTML = `
         <h3>${monthString}</h3>
-        <div class="month-inner-container">
-        <div class="event-cell">
-          <ul class="month-cell-list event-list"></ul>
-          <span class="add-btn add-event-btn"><i title="Add Event" class="fas fa-plus-square"></i></span>
-        </div>
-        <div class="task-cell">
-          <ul class="month-cell-list task-list"></ul>
-          <span class="add-btn add-task-btn"><i title="Add Task" class="fas fa-plus-square"></i></span>
-        </div>
-      </div>
+        <ul class='month-cell-list'></ul>
+        <span class="add-btn add-to-month"><i title="Add task or event" class="fas fa-plus-square"></i></span>
         `;
   return monthCell;
 };
@@ -75,35 +67,9 @@ const populateYear = monthsArray => {
 
 const renderYearPage = d => {
   clearPages();
-  createYearHeaders();
   populateYear(getMonths(d.getFullYear()))
 
 };
-
-const createYearHeaders = () => {
-  const headerContainerLeft = document.createElement('div');
-  headerContainerLeft.className = "header-l";
-  headerContainerLeft.innerHTML = `
-    <h2>Events</h2>
-    <h2>Tasks</h2>
-  `;
-
-  const headerContainerRight = document.createElement('div');
-  headerContainerRight.className = "header-r";
-  headerContainerRight.innerHTML = `
-    <h2>Events</h2>
-    <h2>Tasks</h2>
-  `;
-
-
-  leftPage.prepend(headerContainerLeft);
-  rightPage.prepend(headerContainerRight);
-
-  // const taskHeader = document.createElement('h2');
-  // taskHeader.textContent = 'Tasks';
-  // leftPage.prepend(taskHeader);
-  // rightPage.prepend(taskHeader);
-}
 
 //check to see if content in too big for container
 const checkOverflow = () => {

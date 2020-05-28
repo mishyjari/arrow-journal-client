@@ -55,8 +55,13 @@
 
 #week-page-left .task-cell .add-btn, #week-page-right .task-cell .add-btn, #week-page-left .event-cell .add-btn, #week-page-right .event-cell .add-btn {
     position: absolute;
+    display: none;
     right: 5px;
     bottom: 5px;
+}
+
+#week-page-left .task-cell:hover .add-btn, #week-page-right .task-cell:hover .add-btn, #week-page-left .event-cell:hover .add-btn, #week-page-right .event-cell:hover .add-btn {
+    display: block;
 }
 
 .add-btn i {

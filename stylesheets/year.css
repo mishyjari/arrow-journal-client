@@ -1,16 +1,5 @@
-#year-page-left .header-l, #year-page-right .header-r {
-  display: flex;
-  justify-content: space-around;
-}
-
-#year-page-left .header-l h2, #year-page-right .header-r h2 {
-  font-size: 1.35rem;
-  text-decoration: underline;
-  padding-top: .25rem;
-}
-
 #year-page-left > .month-cell, #year-page-right > .month-cell {
-    height: calc((100% / 6) - 1.5%);
+    height: calc((100% / 6) - .75%);
     margin-bottom: 1%;
     border-bottom: 1px solid #cecece;
   }
@@ -24,48 +13,15 @@
     position: relative;
   }
 
-  #year-page-left .month-cell h3, #year-page-right .month-cell h3 {
-    text-align: center;
-  }
-
-  #year-page-left .month-inner-container, #year-page-right .month-inner-container {
-    display: flex;
-    height: calc(100% - 1.4rem);
-  }
-
-  #year-page-left .month-inner-container > *, #year-page-right .month-inner-container > * {
-    flex-basis: 50%;
-  }
-
-  #year-page-left .event-cell, #year-page-right .event-cell {
-    border-right: 1px solid #cecece;
-  }
-
-  #year-page-left .event-cell, #year-page-right .event-cell, #year-page-left .task-cell, #year-page-right .task-cell {
-    position: relative;
-    padding: .25rem;
-  }
-
-  #year-page-left .event-cell .add-btn, #year-page-left .task-cell .add-btn {
+  #year-page-left .month-cell .add-to-month, #year-page-right .month-cell .add-to-month {
     position: absolute;
-    bottom: 5px;
     right: 5px;
-  }
-
-  #year-page-right .event-cell .add-btn, #year-page-right .task-cell .add-btn {
-    position: absolute;
     bottom: 5px;
-    right: 5px;
+    display: none;
   }
 
-  #year-page-left .month-cell .more-btn, #year-page-right .month-cell .more-btn {
-    position: absolute;
-    right: 0;
-    bottom: -10px;
-    font-size: 1rem;
-    padding: 4px 8px;
-    border: none;
-    background: #003459;
+  #year-page-left .month-cell:hover .add-to-month, #year-page-right .month-cell:hover .add-to-month {
+    display: block;
   }
 
   #year-page-left .month-cell:hover, #year-page-right .month-cell:hover {
