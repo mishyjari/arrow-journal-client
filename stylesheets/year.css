@@ -6,6 +6,16 @@
   #year-page-left > :last-child, #year-page-right > :last-child {
     border: none;
   }
+
+  #year-page-left .month-cell, #year-page-right .month-cell {
+    overflow-y: auto;
+    overflow: hidden;
+  }
+
+  #year-page-left .month-cell:hover, #year-page-right .month-cell:hover {
+    overflow-y: auto;
+  }
+
   #year-page-left h3, #year-page-right h3 {
     font-size: 1.4rem;
     font-weight: 700;

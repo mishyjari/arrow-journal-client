@@ -67,5 +67,27 @@ const populateYear = monthsArray => {
 
 const renderYearPage = d => {
   clearPages();
-  populateYear(getMonths(d.getFullYear()));
+  leftPage.id = "year-page-left"
+  rightPage.id = "year-page-right"
+  populateYear(getMonths(d.getFullYear()))
+
 };
+
+
+//check to see if content in too big for container
+const checkOverflow = () => {
+  function isOverflown(element) {
+    return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  }
+  
+  const els = document.getElementsByClassName('month-cell');
+  for (let i = 0; i < els.length; i++) {
+    const el = els[i];
+
+    if (isOverflown(el)) {
+      el.style.backgroundColor = "red"
+    } else {
+      el.style.backgroundColor = "green"
+    }
+  }
+}
