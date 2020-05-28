@@ -1,5 +1,16 @@
-#year-page-left > *, #year-page-right > * {
-    height: calc((100% / 6) - 1%);
+#year-page-left .header-l, #year-page-right .header-r {
+  display: flex;
+  justify-content: space-around;
+}
+
+#year-page-left .header-l h2, #year-page-right .header-r h2 {
+  font-size: 1.35rem;
+  text-decoration: underline;
+  padding-top: .25rem;
+}
+
+#year-page-left > .month-cell, #year-page-right > .month-cell {
+    height: calc((100% / 6) - 1.5%);
     margin-bottom: 1%;
     border-bottom: 1px solid #cecece;
   }
@@ -11,6 +22,40 @@
     overflow-y: auto;
     overflow: hidden;
     position: relative;
+  }
+
+  #year-page-left .month-cell h3, #year-page-right .month-cell h3 {
+    text-align: center;
+  }
+
+  #year-page-left .month-inner-container, #year-page-right .month-inner-container {
+    display: flex;
+    height: calc(100% - 1.4rem);
+  }
+
+  #year-page-left .month-inner-container > *, #year-page-right .month-inner-container > * {
+    flex-basis: 50%;
+  }
+
+  #year-page-left .event-cell, #year-page-right .event-cell {
+    border-right: 1px solid #cecece;
+  }
+
+  #year-page-left .event-cell, #year-page-right .event-cell, #year-page-left .task-cell, #year-page-right .task-cell {
+    position: relative;
+    padding: .25rem;
+  }
+
+  #year-page-left .event-cell .add-btn, #year-page-left .task-cell .add-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  #year-page-right .event-cell .add-btn, #year-page-right .task-cell .add-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
   }
 
   #year-page-left .month-cell .more-btn, #year-page-right .month-cell .more-btn {

@@ -22,9 +22,11 @@ const renderWeekPage = d => {
       <div class="day-inner-container">
         <div class="event-cell">
           <ul class="day-cell-list event-list"></ul>
+          <span class="add-btn add-event-btn"><i title="Add Event" class="fas fa-plus-square"></i></span>
         </div>
         <div class="task-cell">
           <ul class="day-cell-list task-list"></ul>
+          <span class="add-btn add-task-btn"><i title="Add Task" class="fas fa-plus-square"></i></span>
         </div>
       </div>
     `;

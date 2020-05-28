@@ -1,9 +1,9 @@
-.header-l, .header-r {
+#week-page-left .header-l, #week-page-right .header-r {
     display: flex;
     justify-content: space-around;
 }
 
-.header-l h2, .header-r h2 {
+#week-page-left .header-l h2, #week-page-right .header-r h2 {
     font-size: 1.35rem;
     text-decoration: underline;
     padding-top: .25rem;
@@ -29,7 +29,7 @@
     display: flex;
 }
 
-.event-cell, .task-cell {
+#week-page-left .event-cell, #week-page-left .task-cell, #week-page-right .event-cell, #week-page-right .task-cell {
     margin-top: .5rem;
     padding-left: .25rem;
     padding-right: .25rem;
@@ -43,4 +43,28 @@
 
 #week-page-left .task-cell, #week-page-right .task-cell {
     flex-basis: 50%;
+}
+
+#week-page-left .day-cell, #week-age-right .day-cell {
+    position: relative;
+}
+
+#week-page-left .task-cell, #week-page-right .task-cell, #week-page-left .event-cell, #week-page-right .event-cell {
+    position: relative;
+}
+
+#week-page-left .task-cell .add-btn, #week-page-right .task-cell .add-btn, #week-page-left .event-cell .add-btn, #week-page-right .event-cell .add-btn {
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.add-btn i {
+    color: #003459;
+    transition: all .2s ease-in-out;
+}
+
+.add-btn i:hover {
+    color: #007EA7;
+    cursor: pointer;
 }
