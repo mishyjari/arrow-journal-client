@@ -1,5 +1,6 @@
 const renderWeekPage = d => {
   clearPages();
+  createWeekHeaders();
 
   // Start by taking the date passed in and setting it to the Sunday beggining that week
   d.setDate(d.getDate() - d.getDay());
@@ -20,11 +21,9 @@ const renderWeekPage = d => {
       <h3>${dateObj.toDateString()}</h3>
       <div class="day-inner-container">
         <div class="event-cell">
-          <h4>Events</h4>
           <ul class="day-cell-list event-list"></ul>
         </div>
         <div class="task-cell">
-          <h4>Tasks</h4>
           <ul class="day-cell-list task-list"></ul>
         </div>
       </div>
@@ -57,6 +56,32 @@ const renderWeekPage = d => {
   // We will need one for the next week preview too, but I'm not sure exactly what functionality it should have yet
 
 };
+
+const createWeekHeaders = () => {
+  const headerContainerLeft = document.createElement('div');
+  headerContainerLeft.className = "header-l";
+  headerContainerLeft.innerHTML = `
+    <h2>Events</h2>
+    <h2>Tasks</h2>
+  `;
+  
+  const headerContainerRight = document.createElement('div');
+  headerContainerRight.className = "header-r";
+  headerContainerRight.innerHTML = `
+    <h2>Events</h2>
+    <h2>Tasks</h2>
+  `;
+
+
+  leftPage.prepend(headerContainerLeft);
+  rightPage.prepend(headerContainerRight);
+
+  // const taskHeader = document.createElement('h2');
+  // taskHeader.textContent = 'Tasks';
+  // leftPage.prepend(taskHeader);
+  // rightPage.prepend(taskHeader);
+}
+
 /*
   leftPage.innerHTML = `
     <div class="day-cell">

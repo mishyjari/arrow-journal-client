@@ -57,7 +57,9 @@ const populateYear = monthsArray => {
     if (cell) {
       const eventLi = document.createElement('li');
       eventLi.textContent = ev.name;
-      cell.appendChild(eventLi)
+      const monthList = cell.querySelector('ul')
+      // cell.appendChild(eventLi)
+      monthList.appendChild(eventLi)
     }
   })
 };
@@ -80,9 +82,17 @@ const checkOverflow = () => {
     const el = els[i];
 
     if (isOverflown(el)) {
-      el.style.backgroundColor = "red"
+      // createSeeMoreBtn(el);
     } else {
-      el.style.backgroundColor = "green"
+      
     }
   }
+}
+
+//not working as intended, adds way too many buttons
+const createSeeMoreBtn = (el) => {
+  const moreBtn = document.createElement('button');
+  moreBtn.textContent = 'See More';
+  moreBtn.className = 'more-btn'
+  el.appendChild(moreBtn)
 }

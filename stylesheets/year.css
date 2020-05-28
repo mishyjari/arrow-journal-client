@@ -10,6 +10,17 @@
   #year-page-left .month-cell, #year-page-right .month-cell {
     overflow-y: auto;
     overflow: hidden;
+    position: relative;
+  }
+
+  #year-page-left .month-cell .more-btn, #year-page-right .month-cell .more-btn {
+    position: absolute;
+    right: 0;
+    bottom: -10px;
+    font-size: 1rem;
+    padding: 4px 8px;
+    border: none;
+    background: #003459;
   }
 
   #year-page-left .month-cell:hover, #year-page-right .month-cell:hover {
@@ -19,4 +30,10 @@
   #year-page-left h3, #year-page-right h3 {
     font-size: 1.4rem;
     font-weight: 700;
+  }
+
+  #year-page-left .month-cell-list, #year-page-right .month-cell-list {
+    /* background: orange; */
+    width: 100%;
+    column-count: 2;
   }

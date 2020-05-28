@@ -1,6 +1,17 @@
+.header-l, .header-r {
+    display: flex;
+    justify-content: space-around;
+}
+
+.header-l h2, .header-r h2 {
+    font-size: 1.35rem;
+    text-decoration: underline;
+    padding-top: .25rem;
+}
+
 #week-page-left .day-cell, #week-page-right .day-cell {
     margin-bottom: 1rem;
-    height: calc((100% / 4) - 1%);
+    height: calc((100% / 4) - 1% -1.6rem);
     border-bottom: 1px solid #cecece;
 }
 
@@ -11,6 +22,7 @@
 #week-page-left .day-cell h3, #week-page-right .day-cell h3 {
     font-size: 1.4rem;
     font-weight: 700;
+    text-align: center;
 }
 
 #week-page-left .day-inner-container, #week-page-right .day-inner-container {
@@ -22,11 +34,6 @@
     padding-left: .25rem;
     padding-right: .25rem;
     min-height: 147px;
-}
-
-.event-cell h4, .task-cell h4 {
-    text-align: center;
-    text-decoration: underline;
 }
 
 #week-page-left .event-cell, #week-page-right .event-cell {
