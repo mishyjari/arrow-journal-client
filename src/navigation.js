@@ -1,3 +1,9 @@
+// Update page IDs
+const updatePageIds = newId => {
+  leftPage.id = newId + '-left';
+  rightPage.id = newId + '-right';
+}
+
 // Populate tabs
 const populateRightTabs = () => {
   const rightTabContainer = document.querySelector("div[class='tab-container']");
@@ -26,8 +32,10 @@ tabs.addEventListener('click', (e) => {
   }
 
   if (e.target.id === "welcome-tab") {
-    e.target.style.height = "57px"
+    e.target.style.height = "60px"
     e.target.style.bottom = "-25px"
+
+    updatePageIds('welcome-page');
 
     getActiveUserId() ? renderWelcomePagePrivate(getActiveUserId()) :
       renderWelcomePublic()
@@ -36,20 +44,28 @@ tabs.addEventListener('click', (e) => {
     e.target.style.height = "60px"
     e.target.style.bottom = "-25px"
 
+    updatePageIds('year-page');
+
     renderYearPage(activeDate);
   } else if (e.target.id === "month-tab") {
     e.target.style.height = "63px"
     e.target.style.bottom = "-25px"
+
+    updatePageIds('month-page');
 
     renderMonthPage(activeDate);
   } else if (e.target.id === "week-tab") {
     e.target.style.height = "66px"
     e.target.style.bottom = "-25px"
 
+    updatePageIds('week-page');
+
     renderWeekPage(activeDate)
   } else if (e.target.id === "memo-tab") {
     e.target.style.height = "72px"
     e.target.style.bottom = "-25px"
+
+    updatePageIds('memo-page');
 
     renderMemoPage(activeDate);
   }

@@ -6,7 +6,6 @@ const getMonths = year => {
   // Create new date (today) if date not passed in
   year ? d = new Date(year,0) : d = new Date();
   d.setDate(1);
-
   // Push date and iterate month 12 times
   const months = [];
   while( months.length < 12 ){
@@ -18,11 +17,9 @@ return months;
 
 // Create monthly cell for yearly overviews
 const createMonthCell = dateObject => {
-
   // Display heading MonthName - Full Year
   const monthString = dateObject.toLocaleDateString('en-US',
     {month: "long", year: "numeric"});
-
   // Create and return div for this month
   const monthCell = document.createElement('div');
     monthCell.className = 'month-cell';
@@ -67,8 +64,6 @@ const populateYear = monthsArray => {
 
 const renderYearPage = d => {
   clearPages();
-  leftPage.id = "year-page-left"
-  rightPage.id = "year-page-right"
   populateYear(getMonths(d.getFullYear()))
 
 };
@@ -79,7 +74,7 @@ const checkOverflow = () => {
   function isOverflown(element) {
     return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
   }
-  
+
   const els = document.getElementsByClassName('month-cell');
   for (let i = 0; i < els.length; i++) {
     const el = els[i];

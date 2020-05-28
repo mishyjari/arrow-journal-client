@@ -10,6 +10,7 @@
 // Render Sign-In / Registration Forms
 const renderWelcomePublic = () => {
   clearPages();
+  
   renderLoginForm();
   renderNewUserForm();
   renderAboutPage();
