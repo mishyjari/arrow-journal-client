@@ -53,6 +53,10 @@
     position: relative;
 }
 
+#week-page-left .task-cell:hover, #week-page-right .task-cell:hover, #week-page-left .event-cell:hover, #week-page-right .event-cell:hover {
+    background: #f7f7f7;
+}
+
 #week-page-left .task-cell .add-btn, #week-page-right .task-cell .add-btn, #week-page-left .event-cell .add-btn, #week-page-right .event-cell .add-btn {
     position: absolute;
     display: none;

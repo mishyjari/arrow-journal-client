@@ -20,6 +20,7 @@ const getEvents = method => {
 // Attaches new event form to parentNode arg. Degaults to hidden.
 const renderNewEventForm = parentNode => {
   const newEventFormContainer = document.createElement('div');
+  // newEventFormContainer.className = "form-container";
   newEventFormContainer.innerHTML = `
     <div id='new-event-container' class='hidden'>
       <h2>New Event</h2>

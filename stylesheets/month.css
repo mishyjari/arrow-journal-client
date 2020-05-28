@@ -1,74 +1,71 @@
-#month-left h3 {
+#month-page-left h3 {
     font-size: 2rem;
     text-align: center;
     margin-bottom: 1rem;
 }
 
-#month-left ul {
+#month-page-left ul {
     height: calc(100% - 3rem);
 }
 
-month-left ul li {
+#month-page-left ul li {
     transition: all .2s ease-in-out;
 }
 
-#month-left ul li:hover {
+#month-page-left ul li:hover {
     background: #f7f7f7;
 }
 
-#month-left span.add-event-dayline {
+#month-page-left span.add-event-dayline {
     margin-right: .5rem;
 }
 
-#month-left span.date {
+#month-page-left span.date {
     width: 70px;
     display: inline-block;
     border-right: 1px solid #cecece;
 }
 
-#month-left i {
+#month-page-left i {
     color: #003459;
     transition: all .2s ease-in-out;
 }
 
-#month-left i:hover {
+#month-page-left i:hover {
     cursor: pointer;
     color: #007EA7;
 }
 
-#month-right form {
+#month-page-right form {
     margin: auto;
     text-align: center;
 }
 
-#month-right form > * {
+#month-page-right form > * {
     margin-left: auto;
     margin-right: auto;
 }
 
-#month-right h2 {
+#month-page-right h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
-#month-right form td {
+#month-page-right form td {
     padding-bottom: 1rem;
 }
 
-td {
-  overflow: hidden;
-}
-
-#month-left .daily-content-container {
+#month-page-left .daily-content-container {
     display: inline-block;
     width: 80%;
     position: relative;
 }
 
-#month-left .see-more {
+#month-page-left .see-more {
     position: absolute;
     right: 0;
+    bottom: -9px;
     font-size: 1rem;
     display: none;
     padding: 2px 4px;
@@ -77,11 +74,15 @@ td {
     transition: all .2s ease-in-out;
 }
 
-#month-left li:hover .see-more {
+#month-page-left li:hover .see-more {
     display: inline-block;
 }
 
-#month-left li:hover .see-more:hover {
+#month-page-left li:hover .see-more:hover {
     cursor: pointer;
     background: #007EA7;
+}
+
+#month-page-right {
+    
 }

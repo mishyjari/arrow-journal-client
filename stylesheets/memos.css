@@ -4,11 +4,18 @@
     margin-bottom: 1.5rem;
 }
 
-#memo-page-left .journal-entry, #memo-page-right .journal-entry {
+#memo-page-left .memo-entry, #memo-page-right .memo-entry {
     margin-bottom: 1rem;
+    background-color: #f7f7f7;
+    padding: .5rem;
+    position: relative;
 }
 
-#memo-page-left .journal-entry p, #memo-page-right .journal-entry p {
+#memo-page-left .memo-entry:hover, #memo-page-right .memo-entry:hover {
+
+}
+
+#memo-page-left .memo-entry p, #memo-page-right .memo-entry p {
     line-height: 1.6;
 }
 
@@ -18,4 +25,25 @@
     margin-bottom: .25rem;
     font-size: 1.3rem;
     text-decoration: underline;
+}
+
+#memo-page-left .memo-entry .memo-edit-btn, #memo-page-right .memo-entry .memo-edit-btn {
+    display: none;
+}
+
+#memo-page-left .memo-entry:hover .memo-edit-btn, #memo-page-right .memo-entry:hover .memo-edit-btn {
+    text-decoration: none;
+    color: #f7f7f7;
+    background: #003459;
+    padding: 4px 6px;
+    font-size: 1rem;
+    bottom: 5px;
+    right: 5px;
+    display: inline-block;
+    position: absolute;
+}
+
+#memo-page-left .memo-entry:hover .memo-edit-btn:hover, #memo-page-right .memo-entry:hover .memo-edit-btn:hover {
+    cursor: pointer;
+    background: #007EA7;
 }
