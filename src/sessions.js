@@ -1,26 +1,19 @@
 // This is a hack job sessions management system used strictly for development
 const getActiveUserId = () => {
-
-  // Session cookie stored as a string `user=${id}`
-  if( document.cookie.includes('user=') ){
-    const id = document.cookie.split('=')[1];
-    if (id){
-      return id
-    } else {
-      return false
-    };
+  if ( sessionStorage.getItem('user') ){
+    return sessionStorage.getItem('user')
   } else {
-    document.cookie = 'user=';
-    getActiveUserId();
-  };
+    return false;
+  }
 };
 
 const resetSession = () => {
-  document.cookie = 'user='
+  sessionStorage.clear();
 };
 
 const createSession = id => {
-  document.cookie = `user=${id}`;
+  sessionStorage.setItem('user', id)
+  renderSettingsTab();
 };
 
 // Return promose to deliver user's journal

@@ -12,11 +12,24 @@ const renderSettingsTab = () => {
           <option value="montserrat">Montserrat</option>
           <option value="yellowtail" id='yellowtail'>Yellowtail</option>
         </select>
-        <div class="logout-container">
-          <button id="logout-btn">Logout</button>
-        </div>
       </div>
   `;
+
+  // Append Logout Button if user is logged in
+  if (getActiveUserId()){
+    const settingsTab = document.querySelector("div[class='settings-dropdown']");
+    const logoutContainer = document.createElement('div');
+    logoutContainer.className = 'logout-container';
+    logoutContainer.innerHTML = `<button id="logout-btn">Logout</button>`;
+
+    settingsTab.appendChild(logoutContainer);
+
+    logoutContainer.querySelector('button').addEventListener('click', () => {
+      resetSession();
+      renderWelcomePublic();
+      renderSettingsTab();
+    })
+  };
 
   const fontSelect = document.querySelector("#font-select");
   const body = document.querySelector('body');
