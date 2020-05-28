@@ -1,12 +1,12 @@
 
 
 const renderMonthPage = d => {
+
   clearPages();
 
   leftPage.id = "month-left"
   rightPage.id = "month-right"
 
-  clearPages();
 
   const getDaysInMonth = d => {
     const month = d.getMonth();
@@ -42,10 +42,18 @@ const renderMonthPage = d => {
     // const dayLine = document.createElement('tr');
     const dayLine = document.createElement('li');
     dayLine['data-day'] = day;
+    dayLine.id = "dayline-" + day.toLocaleDateString();
 
     dayLine.innerHTML = `
-      <span class="add-event-dayline"><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></span>
-      <span class="date">${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></span>
+      <span class="add-event-dayline">
+        <strong>
+          <i title="Add Event" class="fas fa-plus-square"></i>
+        </strong>
+      </span>
+      <span class="date">
+        ${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong>
+      </span>
+      <span class='dayline-events'></span>
     `;
 
     //variable height of li's depending on days in month
@@ -70,9 +78,12 @@ const renderMonthPage = d => {
     });
 
     getEvents(ev => {
-      const dayLine = document.getElementById(`dayline-${ev.start_date.toLocaleDateString()}`);
-      if ( dayLine && ev.start_date.getMonth() === d.getMonth() ){
-        dayLine.textContent += ev.name;
+      const start = new Date(ev.start_date).toLocaleDateString()
+      const dayLine = document.getElementById(`dayline-${start}`);
+      if ( dayLine && start === day.toLocaleDateString() ){
+        const eventItem = document.createElement('span')
+        eventItem.textContent = ev.name
+        dayLine.appendChild(eventItem)
       }
     })
   });

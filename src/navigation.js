@@ -1,3 +1,54 @@
+// Handle navigation
+const navigate = (page,e) => {
+  if (getActiveUserId()) {
+    switch (page) {
+      case "welcome":
+        e.target.style.height = "55px"
+        e.target.style.bottom = "-20px"
+
+        updatePageIds('welcome-page');
+        renderWelcomePagePrivate(getActiveUserId())
+        break;
+      case "year":
+        e.target.style.height = "58px"
+        e.target.style.bottom = "-20px"
+
+        updatePageIds('year-page');
+        renderYearPage(activeDate);
+        break;
+      case "month":
+        e.target.style.height = "61px"
+        e.target.style.bottom = "-20px"
+
+        updatePageIds('month-page');
+        renderMonthPage(activeDate);
+        break;
+      case "week":
+        e.target.style.height = "64px"
+        e.target.style.bottom = "-20px"
+
+        updatePageIds('week-page');
+        renderWeekPage(activeDate)
+        break;
+      case "memos":
+        e.target.style.height = "67px"
+        e.target.style.bottom = "-20px"
+
+        updatePageIds('memo-page');
+        renderMemoPage(activeDate);
+        break;
+    }
+  } else {
+    renderWelcomePublic();
+    rightPage.innerHTML = `
+      <div class='message'>
+        <h2>Please login or sign up to continue</h2>
+      </div>
+    `
+  }
+}
+
+
 // Update page IDs
 const updatePageIds = newId => {
   leftPage.id = newId + '-left';
@@ -31,44 +82,11 @@ tabs.addEventListener('click', (e) => {
     tabArr[i].style.bottom = null
   }
 
-  if (e.target.id === "welcome-tab") {
-    e.target.style.height = "55px"
-    e.target.style.bottom = "-20px"
-
-    updatePageIds('welcome-page');
-
-    getActiveUserId() ? renderWelcomePagePrivate(getActiveUserId()) :
-      renderWelcomePublic()
-
-  } else if (e.target.id === "year-tab") {
-    e.target.style.height = "58px"
-    e.target.style.bottom = "-20px"
-
-    updatePageIds('year-page');
-
-    renderYearPage(activeDate);
-  } else if (e.target.id === "month-tab") {
-    e.target.style.height = "61px"
-    e.target.style.bottom = "-20px"
-
-    updatePageIds('month-page');
-
-    renderMonthPage(activeDate);
-  } else if (e.target.id === "week-tab") {
-    e.target.style.height = "64px"
-    e.target.style.bottom = "-20px"
-
-    updatePageIds('week-page');
-
-    renderWeekPage(activeDate)
-  } else if (e.target.id === "memo-tab") {
-    e.target.style.height = "67px"
-    e.target.style.bottom = "-20px"
-
-    updatePageIds('memo-page');
-
-    renderMemoPage(activeDate);
-  }
+  if (e.target.id === "welcome-tab") { navigate('welcome',e ) }
+  else if (e.target.id === "year-tab") { navigate('year', e ) }
+  else if (e.target.id === "month-tab") { navigate('month', e ) }
+  else if (e.target.id === "week-tab") { navigate('week', e ) }
+  else if (e.target.id === "memo-tab") { navigate('memos', e ) }
 
 	if (e.target.className === "tab") {
 			e.target.classList.add("active-page")

@@ -45,11 +45,12 @@ const renderWeekPage = d => {
   // Will need to fetch and populate.
   // This isn't working yet. Besides, I'd rather query the DB more selectively.
   getEvents(event => {
-    const cell = document.getElementById('day-cell' + event.start_date)
+    const start = new Date(event.start_date);
+    const cell = document.getElementById(`day-cell-${start.toLocaleDateString()}`);
     if ( cell ){
       const eventLi = document.createElement('li');
       eventLi.textContent = event.name;
-      cell.querySelector("ul[class='event-list']").appendChild(eventLi);
+      cell.querySelector("ul[class='day-cell-list event-list']").appendChild(eventLi);
     }
   })
 
@@ -64,7 +65,7 @@ const createWeekHeaders = () => {
     <h2>Events</h2>
     <h2>Tasks</h2>
   `;
-  
+
   const headerContainerRight = document.createElement('div');
   headerContainerRight.className = "header-r";
   headerContainerRight.innerHTML = `

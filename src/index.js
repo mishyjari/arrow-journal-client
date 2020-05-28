@@ -14,6 +14,7 @@ const rightPage = document.querySelector("section[class='right']");
 const clearPages = () => {
   leftPage.innerHTML = '';
   rightPage.innerHTML = '';
+	console.log('pages clear')
 }
 
 document.addEventListener("DOMContentLoaded", () => {

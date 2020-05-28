@@ -49,8 +49,8 @@ const populateYear = monthsArray => {
 
   // Fetch events and populate
   getEvents(ev => {
-    const y = ev.start_date.getFullYear();
-    const m = ev.start_date.getMonth();
+    const y = new Date(ev.start_date).getFullYear()
+    const m = new Date(ev.start_date).getMonth();
     const cell = document.getElementById(`month-cell-${y}-${m}`)
 
     // Ignore events out of date range
@@ -84,7 +84,7 @@ const checkOverflow = () => {
     if (isOverflown(el)) {
       // createSeeMoreBtn(el);
     } else {
-      
+
     }
   }
 }
