@@ -81,3 +81,23 @@ const renderSettingsTab = () => {
     }
   });
 }
+
+const renderArrowBtns = () => {
+  const journalMain = document.querySelector('#journal-main');
+  const arrowLeft = document.createElement('div');
+  const arrowRight = document.createElement('div');
+  
+  arrowLeft.className = 'arrow-left';
+  arrowRight.className = 'arrow-right';
+
+  arrowLeft.innerHTML = `
+    <i class="fas fa-arrow-left"></i>
+  `;
+
+  arrowRight.innerHTML = `
+    <i class="fas fa-arrow-right"></i>
+  `;
+
+  journalMain.appendChild(arrowLeft);
+  journalMain.appendChild(arrowRight);
+};

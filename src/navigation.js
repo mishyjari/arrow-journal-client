@@ -90,13 +90,29 @@ const populateRightTabs = () => {
 const tabs = document.querySelector('.tab-container')
 
 tabs.addEventListener('click', (e) => {
+  const arrowLeft = document.querySelector('.arrow-left');
+  const arrowRight = document.querySelector('.arrow-right');
 
-
-  if (e.target.id === "welcome-tab") { navigate('welcome',e.target ) }
-  else if (e.target.id === "year-tab") { navigate('year', e.target ) }
-  else if (e.target.id === "month-tab") { navigate('month', e.target ) }
-  else if (e.target.id === "week-tab") { navigate('week', e.target ) }
-  else if (e.target.id === "memo-tab") { navigate('memos', e.target ) }
+  if (e.target.id === "welcome-tab") { navigate('welcome',e.target )
+    arrowLeft.style.display = "none"
+    arrowRight.style.display = "none"
+  }
+  else if (e.target.id === "year-tab") { navigate('year', e.target ) 
+    arrowLeft.style.display = "block"
+    arrowRight.style.display = "block"
+  }
+  else if (e.target.id === "month-tab") { navigate('month', e.target ) 
+    arrowLeft.style.display = "block"
+    arrowRight.style.display = "block"
+  }
+  else if (e.target.id === "week-tab") { navigate('week', e.target ) 
+    arrowLeft.style.display = "block"
+    arrowRight.style.display = "block"
+  }
+  else if (e.target.id === "memo-tab") { navigate('memos', e.target ) 
+    arrowLeft.style.display = "block"
+    arrowRight.style.display = "block"
+  }
 
 	if (e.target.className === "tab") {
 			e.target.classList.add("active-page")

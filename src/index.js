@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	renderSettingsTab();
 	populateRightTabs();
+	renderArrowBtns();
 
 	// A terrible way of handling session cookies. Dont do this.
 
@@ -36,9 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	} else {
 		renderWelcomePublic();
 	}
-
-
-
 
 
 })

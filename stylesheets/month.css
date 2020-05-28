@@ -8,6 +8,14 @@
     height: calc(100% - 3rem);
 }
 
+month-left ul li {
+    transition: all .2s ease-in-out;
+}
+
+#month-left ul li:hover {
+    background: #f7f7f7;
+}
+
 #month-left span.add-event-dayline {
     margin-right: .5rem;
 }

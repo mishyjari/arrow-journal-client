@@ -276,12 +276,14 @@ div.tab.active-page {
 	position: absolute;
 	left: 20px;
 	bottom: 10px;
+	display: none;
 }
 
 .arrow-right {
 	position: absolute;
 	right: 20px;
 	bottom: 10px;
+	display: none;
 }
 
 main#journal-main {
