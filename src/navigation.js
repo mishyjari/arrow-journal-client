@@ -1,50 +1,69 @@
 // Handle navigation
-const navigate = (page,e) => {
+const navigate = (page, tab) => {
+  const tabCollection = tabs.getElementsByClassName("tab")
+  const tabArr = Array.from(tabCollection)
+  // removes active page class from all tabs so you can set a new one on click
+  for (let i = 0; i < tabArr.length; i++) {
+    tabArr[i].className = "tab"
+    tabArr[i].style.zIndex = null
+    tabArr[i].style.height = null
+    tabArr[i].style.bottom = null
+  }
+  if (!tab) { tab = document.getElementById(`${page}-tab` )}
   if (getActiveUserId()) {
     switch (page) {
       case "welcome":
-        e.target.style.height = "55px"
-        e.target.style.bottom = "-20px"
+        tab.style.height = "55px"
+        tab.style.bottom = "-20px"
 
         updatePageIds('welcome-page');
         renderWelcomePagePrivate(getActiveUserId())
         break;
       case "year":
-        e.target.style.height = "58px"
-        e.target.style.bottom = "-20px"
+        tab.style.height = "58px"
+        tab.style.bottom = "-20px"
 
         updatePageIds('year-page');
         renderYearPage(activeDate);
         break;
       case "month":
-        e.target.style.height = "61px"
-        e.target.style.bottom = "-20px"
+        tab.style.height = "61px"
+        tab.style.bottom = "-20px"
 
         updatePageIds('month-page');
         renderMonthPage(activeDate);
         break;
       case "week":
-        e.target.style.height = "64px"
-        e.target.style.bottom = "-20px"
+        tab.style.height = "64px"
+        tab.style.bottom = "-20px"
 
         updatePageIds('week-page');
         renderWeekPage(activeDate)
         break;
       case "memos":
-        e.target.style.height = "67px"
-        e.target.style.bottom = "-20px"
+        tab.style.height = "67px"
+        tab.style.bottom = "-20px"
 
         updatePageIds('memo-page');
         renderMemoPage(activeDate);
         break;
     }
+  } else if ( page === 'welcome' ){
+    tab.style.height = "55px"
+    tab.style.bottom = "-20px"
+
+    updatePageIds('welcome-page');
+    renderWelcomePublic();
   } else {
+    tab.style.height = "55px"
+    tab.style.bottom = "-20px"
+    updatePageIds('welcome-page');
     renderWelcomePublic();
     rightPage.innerHTML = `
       <div class='message'>
         <h2>Please login or sign up to continue</h2>
       </div>
-    `
+    `;
   }
 }
 
@@ -71,22 +90,13 @@ const populateRightTabs = () => {
 const tabs = document.querySelector('.tab-container')
 
 tabs.addEventListener('click', (e) => {
-	const tabCollection = tabs.getElementsByClassName("tab")
-	// console.log(tabCollection)
-	const tabArr = Array.from(tabCollection)
-	// removes active page class from all tabs so you can set a new one on click
-	for (let i = 0; i < tabArr.length; i++) {
-		tabArr[i].className = "tab"
-    tabArr[i].style.zIndex = null
-  tabArr[i].style.height = null
-    tabArr[i].style.bottom = null
-  }
 
-  if (e.target.id === "welcome-tab") { navigate('welcome',e ) }
-  else if (e.target.id === "year-tab") { navigate('year', e ) }
-  else if (e.target.id === "month-tab") { navigate('month', e ) }
-  else if (e.target.id === "week-tab") { navigate('week', e ) }
-  else if (e.target.id === "memo-tab") { navigate('memos', e ) }
+
+  if (e.target.id === "welcome-tab") { navigate('welcome',e.target ) }
+  else if (e.target.id === "year-tab") { navigate('year', e.target ) }
+  else if (e.target.id === "month-tab") { navigate('month', e.target ) }
+  else if (e.target.id === "week-tab") { navigate('week', e.target ) }
+  else if (e.target.id === "memo-tab") { navigate('memos', e.target ) }
 
 	if (e.target.className === "tab") {
 			e.target.classList.add("active-page")
