@@ -20,6 +20,10 @@
     display: none;
   }
 
+  #year-page-left .month-cell:hover, #year-page-right .month-cell:hover {
+    background: #f7f7f7;
+  }
+
   #year-page-left .month-cell:hover .add-to-month, #year-page-right .month-cell:hover .add-to-month {
     display: block;
   }

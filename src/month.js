@@ -2,9 +2,6 @@ const renderMonthPage = d => {
 
   clearPages();
 
-  leftPage.id = "month-left"
-  rightPage.id = "month-right"
-
 
   const getDaysInMonth = d => {
     const month = d.getMonth();

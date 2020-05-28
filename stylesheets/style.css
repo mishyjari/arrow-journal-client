@@ -291,3 +291,13 @@ main#journal-main {
 	padding-top: 66%;
 	position: relative;
 }
+
+div.form-container {
+	/* top: 50%;
+	transform: translateY(-50%); */
+	text-align: center;
+}
+
+div.form-container * {
+	text-align: center;
+}
