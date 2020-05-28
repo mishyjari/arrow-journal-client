@@ -11,7 +11,7 @@ const getActiveUserId = () => {
     };
   } else {
     document.cookie = 'user=';
-    getActiveUser();
+    getActiveUserId();
   };
 };
 
@@ -22,3 +22,10 @@ const resetSession = () => {
 const createSession = id => {
   document.cookie = `user=${id}`;
 };
+
+// Return promose to deliver user's journal
+const getUserJournal = id => {
+  return fetch(`http://localhost:3000/users/${id}/journal`)
+    .then( res => res.json() )
+    .then( user => user.journals )
+}

@@ -18,6 +18,8 @@ const clearPages = () => {
 
 document.addEventListener("DOMContentLoaded", () => {
 
+	clearPages();
+
 	renderSettingsTab();
 	populateRightTabs();
 

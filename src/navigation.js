@@ -25,11 +25,18 @@ tabs.addEventListener('click', (e) => {
     tabArr[i].style.bottom = null
   }
 
-  if (e.target.id === "year-tab") {
+  if (e.target.id === "welcome-tab") {
+    e.target.style.height = "57px"
+    e.target.style.bottom = "-25px"
+
+    getActiveUserId() ? renderWelcomePagePrivate(getActiveUserId()) :
+      renderWelcomePublic()
+
+  } else if (e.target.id === "year-tab") {
     e.target.style.height = "60px"
     e.target.style.bottom = "-25px"
 
-    populateYear(activeDate);
+    renderYearPage(activeDate);
   } else if (e.target.id === "month-tab") {
     e.target.style.height = "63px"
     e.target.style.bottom = "-25px"
@@ -38,9 +45,8 @@ tabs.addEventListener('click', (e) => {
   } else if (e.target.id === "week-tab") {
     e.target.style.height = "66px"
     e.target.style.bottom = "-25px"
-  } else if (e.target.id === "week-tab") {
-    e.target.style.height = "69px"
-    e.target.style.bottom = "-26px"
+
+    renderWeekPage(activeDate)
   } else if (e.target.id === "memo-tab") {
     e.target.style.height = "72px"
     e.target.style.bottom = "-25px"
