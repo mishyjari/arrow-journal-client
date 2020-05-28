@@ -1,38 +1,31 @@
-#month-left table {
-    height: 100%;
-
+#month-left h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
-#month-left table tr {
-    line-height: 100%;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-top: 0;
-    margin-bottom: 0;
+#month-left ul {
+    height: calc(100% - 3rem);
 }
 
-#month-left table i {
+#month-left span.add-event-dayline {
     margin-right: .5rem;
+}
+
+#month-left span.date {
+    width: 70px;
+    display: inline-block;
+    border-right: 1px solid #cecece;
+}
+
+#month-left i {
     color: #003459;
     transition: all .2s ease-in-out;
-    position: relative;
 }
 
-/* #month-left table i:hover::before {
-    content: 'Add Event';
-    position: absolute;
-    background: #003459;
-    color: #f7f7f7;
-    min-width: 120px;
-    min-height: 30px;
-    line-height: 30px;
-    text-align: center;
-    left: 0;
-    top: 0;
-} */
-
-#month-left table i:hover {
+#month-left i:hover {
     cursor: pointer;
+    color: #007EA7;
 }
 
 #month-right form {

@@ -21,27 +21,43 @@ const renderMonthPage = d => {
     return days;
   };
 
-  const monthTable = document.createElement('table');
+  // const monthTable = document.createElement('table');
+   leftPage.innerHTML = `
+    <h3>${d.toLocaleDateString('en-US',{month: "long", year: "numeric"})}</h3>
+   `;
 
-  monthTable.innerHTML = `
-    <tr>
-      <th></th>
-      <th><h3>${d.toLocaleDateString('en-US',{month: "long", year: "numeric"})}</h3></th>
-    </tr>
-  `;
+   const dayList = document.createElement('ul');
+   leftPage.appendChild(dayList);
+
+  // monthTable.innerHTML = `
+  //   <tr>
+  //     <th></th>
+  //     <th><h3>${d.toLocaleDateString('en-US',{month: "long", year: "numeric"})}</h3></th>
+  //   </tr>
+  // `;
 
   const days = getDaysInMonth(d);
 
   days.forEach(day => {
-    const dayLine = document.createElement('tr');
+    // const dayLine = document.createElement('tr');
+    const dayLine = document.createElement('li');
     dayLine['data-day'] = day;
 
     dayLine.innerHTML = `
-      <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></td>
-      <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td> |
-      <td id='dayline-${day.toLocaleDateString()}'><!-- this is for listing events --></td>
+      <span class="add-event-dayline"><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></span>
+      <span class="date">${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></span>
     `;
-    monthTable.appendChild(dayLine);
+
+    //variable height of li's depending on days in month
+    const daysInMonth = days.length
+    dayLine.style.height = `calc(100% / ${daysInMonth})`
+
+    // dayLine.innerHTML = `
+    //   <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></td>
+    //   <td>${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></td> |
+    //   <td id='dayline-${day.toLocaleDateString()}'><!-- this is for listing events --></td>
+    // `;
+    dayList.appendChild(dayLine);
 
     dayLine.querySelector("i[title='Add Event']").addEventListener('click', e => {
       const newEventForm = document.getElementById('new-event-form');
@@ -61,7 +77,7 @@ const renderMonthPage = d => {
     })
   });
 
-  leftPage.appendChild(monthTable);
+  // leftPage.appendChild(monthTable);
   renderNewEventForm(rightPage);
 
   document.querySelector("strong[class='clickable']").addEventListener('click', e => {

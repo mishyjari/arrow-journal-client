@@ -12,6 +12,9 @@ const renderSettingsTab = () => {
           <option value="montserrat">Montserrat</option>
           <option value="yellowtail" id='yellowtail'>Yellowtail</option>
         </select>
+        <div class="logout-container">
+          <button id="logout-btn">Logout</button>
+        </div>
       </div>
   `;
 
