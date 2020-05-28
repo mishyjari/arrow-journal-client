@@ -30,6 +30,28 @@ const renderWeekPage = d => {
         </div>
       </div>
     `;
+    dayCell.querySelector("span[class='add-btn add-event-btn']").addEventListener("click", e => {
+      const page = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.className;
+      const opposite = page === 'right' ? leftPage : rightPage;
+      opposite.innerHTML = '';
+      renderNewEventForm(opposite);
+
+      // Add Event form
+      const newEventForm = document.getElementById('new-event-form');
+      document.getElementById('new-event-container').className = 'show'
+      newEventForm['start-date'].valueAsDate = dateObj;
+      newEventForm['end-date'].valueAsDate = dateObj;
+      newEventForm['start-time'].value = '12:00'
+      newEventForm['end-time'].value = '13:00';
+    })
+    dayCell.querySelector("span[class='add-btn add-task-btn']").addEventListener("click", () => {
+      // Add Task form
+      const newTaskForm = document.getElementById('new-task-form');
+      document.getElementById('new-task-container').className = 'show';
+
+      newTaskForm.date.valueAsDate = dateObj;
+
+    })
     return dayCell;
   };
 
@@ -55,9 +77,6 @@ const renderWeekPage = d => {
       cell.querySelector("ul[class='day-cell-list event-list']").appendChild(eventLi);
     }
   })
-
-  // We will need one for the next week preview too, but I'm not sure exactly what functionality it should have yet
-
 };
 
 const createWeekHeaders = () => {
@@ -78,120 +97,4 @@ const createWeekHeaders = () => {
 
   leftPage.prepend(headerContainerLeft);
   rightPage.prepend(headerContainerRight);
-
-  // const taskHeader = document.createElement('h2');
-  // taskHeader.textContent = 'Tasks';
-  // leftPage.prepend(taskHeader);
-  // rightPage.prepend(taskHeader);
 }
-
-/*
-  leftPage.innerHTML = `
-    <div class="day-cell">
-      <h3>Sunday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Monday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Tuesday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Wednesday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-  `;
-  rightPage.innerHTML = `
-    <div class="day-cell">
-      <h3>Thursday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Friday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Saturday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-    <div class="day-cell">
-      <h3>Sunday</h3>
-      <div class="day-inner-container">
-        <div class="event-cell">
-          <h4>Events</h4>
-          <ul class="day-cell-list event-list"></ul>
-        </div>
-        <div class="task-cell">
-          <h4>Tasks</h4>
-          <ul class="day-cell-list task-list"></ul>
-        </div>
-      </div>
-    </div>
-  `;
-*/

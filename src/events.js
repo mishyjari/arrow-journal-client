@@ -86,7 +86,7 @@ const renderNewEventForm = parentNode => {
         location: location,
         start_date: start_date,
         end_date: end_date,
-
+        journal_id: JSON.parse(sessionStorage.user).journal.id
       })
     };
 

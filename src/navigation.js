@@ -97,19 +97,19 @@ tabs.addEventListener('click', (e) => {
     arrowLeft.style.display = "none"
     arrowRight.style.display = "none"
   }
-  else if (e.target.id === "year-tab") { navigate('year', e.target ) 
+  else if (e.target.id === "year-tab") { navigate('year', e.target )
     arrowLeft.style.display = "block"
     arrowRight.style.display = "block"
   }
-  else if (e.target.id === "month-tab") { navigate('month', e.target ) 
+  else if (e.target.id === "month-tab") { navigate('month', e.target )
     arrowLeft.style.display = "block"
     arrowRight.style.display = "block"
   }
-  else if (e.target.id === "week-tab") { navigate('week', e.target ) 
+  else if (e.target.id === "week-tab") { navigate('week', e.target )
     arrowLeft.style.display = "block"
     arrowRight.style.display = "block"
   }
-  else if (e.target.id === "memo-tab") { navigate('memos', e.target ) 
+  else if (e.target.id === "memo-tab") { navigate('memos', e.target )
     arrowLeft.style.display = "block"
     arrowRight.style.display = "block"
   }
@@ -118,6 +118,26 @@ tabs.addEventListener('click', (e) => {
 			e.target.classList.add("active-page")
 		 }
 })
+
+const renderArrowBtns = () => {
+  const journalMain = document.querySelector('#journal-main');
+  const arrowLeft = document.createElement('div');
+  const arrowRight = document.createElement('div');
+
+  arrowLeft.className = 'arrow-left';
+  arrowRight.className = 'arrow-right';
+
+  arrowLeft.innerHTML = `
+    <i class="fas fa-arrow-left"></i>
+  `;
+
+  arrowRight.innerHTML = `
+    <i class="fas fa-arrow-right"></i>
+  `;
+
+  journalMain.appendChild(arrowLeft);
+  journalMain.appendChild(arrowRight);
+};
 
 // Hanlde arrow navigation
 document.querySelector("div[class='arrow-left']").addEventListener('click', e => {
