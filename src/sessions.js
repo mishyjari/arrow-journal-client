@@ -9,6 +9,9 @@ const getActiveUserId = () => {
 
 const resetSession = () => {
   sessionStorage.clear();
+  updatePageIds('welcome-page')
+  renderWelcomePublic();
+  renderSettingsTab();
 };
 
 const createSession = id => {

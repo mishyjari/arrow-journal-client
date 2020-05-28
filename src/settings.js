@@ -26,8 +26,6 @@ const renderSettingsTab = () => {
 
     logoutContainer.querySelector('button').addEventListener('click', () => {
       resetSession();
-      renderWelcomePublic();
-      renderSettingsTab();
     })
   };
 

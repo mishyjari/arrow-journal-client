@@ -1,19 +1,19 @@
-#week-left .day-cell, #week-right .day-cell {
+#week-page-left .day-cell, #week-page-right .day-cell {
     margin-bottom: 1rem;
     height: calc((100% / 4) - 1%);
     border-bottom: 1px solid #cecece;
 }
 
-#week-left > :last-child, #week-right > :last-child {
+#week-page-left > :last-child, #week-page-right > :last-child {
     border: none;
 }
 
-#week-left .day-cell h3, #week-right .day-cell h3 {
+#week-page-left .day-cell h3, #week-page-right .day-cell h3 {
     font-size: 1.4rem;
     font-weight: 700;
 }
 
-#week-left .day-inner-container, #week-right .day-inner-container {
+#week-page-left .day-inner-container, #week-page-right .day-inner-container {
     display: flex;
 }
 
@@ -29,11 +29,11 @@
     text-decoration: underline;
 }
 
-#week-left .event-cell, #week-right .event-cell {
+#week-page-left .event-cell, #week-page-right .event-cell {
     flex-basis: 50%;
     border-right: 1px solid #cecece;
 }
 
-#week-left .task-cell, #week-right .task-cell {
+#week-page-left .task-cell, #week-page-right .task-cell {
     flex-basis: 50%;
 }

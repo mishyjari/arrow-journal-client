@@ -27,7 +27,7 @@ tabs.addEventListener('click', (e) => {
 	for (let i = 0; i < tabArr.length; i++) {
 		tabArr[i].className = "tab"
     tabArr[i].style.zIndex = null
-    tabArr[i].style.height = null
+  tabArr[i].style.height = null
     tabArr[i].style.bottom = null
   }
 
@@ -74,3 +74,31 @@ tabs.addEventListener('click', (e) => {
 			e.target.classList.add("active-page")
 		 }
 })
+
+// Hanlde arrow navigation
+document.querySelector("div[class='arrow-left']").addEventListener('click', e => {
+  const timeScope = leftPage.id.split('-')[0];
+  if ( timeScope === 'year' ){
+    activeDate.setFullYear(activeDate.getFullYear() - 1);
+    renderYearPage(activeDate);
+  } else if ( timeScope === 'month' ){
+    activeDate.setMonth(activeDate.getMonth() - 1 );
+    renderMonthPage(activeDate)
+  } else if ( timeScope === 'week' ){
+    activeDate.setDate(activeDate.getDate() - 7 );
+    renderWeekPage(activeDate);
+  }
+});
+document.querySelector("div[class='arrow-right']").addEventListener('click', e => {
+  const timeScope = rightPage.id.split('-')[0];
+  if ( timeScope === 'year' ){
+    activeDate.setFullYear(activeDate.getFullYear() + 1);
+    renderYearPage(activeDate);
+  } else if ( timeScope === 'month' ){
+    activeDate.setMonth(activeDate.getMonth() + 1 );
+    renderMonthPage(activeDate);
+  } else if ( timeScope === 'week' ){
+    activeDate.setDate(activeDate.getDate() + 7  );
+    renderWeekPage(activeDate);
+  }
+});
