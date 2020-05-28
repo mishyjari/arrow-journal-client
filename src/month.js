@@ -46,6 +46,9 @@ const renderMonthPage = d => {
     dayLine.innerHTML = `
       <span class="add-event-dayline"><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></span>
       <span class="date">${day.getDate()} <strong>${day.toLocaleDateString('en-US', {weekday: 'short'})}</strong></span>
+      <span class="daily-content-container">Content here
+      <span class="see-more">See More</span>
+      </span>
     `;
 
     //variable height of li's depending on days in month
@@ -85,6 +88,14 @@ const renderMonthPage = d => {
     newEventForm['start-time'].value = '00:00'
     newEventForm['end-time'].value = '23:59';
     });
+
+    //click listener on all see more buttons
+  dayList.addEventListener('click', (e) => {
+    if (e.target.className === "see-more") {
+      console.log("see more")
+    }
+  })
+
 };
 /*
   monthTable.addEventListener('click', (e) => {

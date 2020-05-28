@@ -51,3 +51,29 @@
 td {
   overflow: hidden;
 }
+
+#month-left .daily-content-container {
+    display: inline-block;
+    width: 80%;
+    position: relative;
+}
+
+#month-left .see-more {
+    position: absolute;
+    right: 0;
+    font-size: 1rem;
+    display: none;
+    padding: 2px 4px;
+    background: #003459;
+    color: #f7f7f7;
+    transition: all .2s ease-in-out;
+}
+
+#month-left li:hover .see-more {
+    display: inline-block;
+}
+
+#month-left li:hover .see-more:hover {
+    cursor: pointer;
+    background: #007EA7;
+}
