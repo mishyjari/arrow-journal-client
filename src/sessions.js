@@ -41,7 +41,7 @@ const getActiveUserJournal = () => {
 const resetSession = () => {
   sessionStorage.clear();
   updatePageIds('welcome-page')
-  renderWelcomePublic();
+  navigate('welcome')
   renderSettingsTab();
 };
 
