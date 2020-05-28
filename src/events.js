@@ -23,6 +23,7 @@ const getEvents = method => {
       end_date: new Date(Date.parse(event.end_date))
     });
     method(e)
+    checkOverflow()
     });
   });
 }
