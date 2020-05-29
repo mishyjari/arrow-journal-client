@@ -77,3 +77,21 @@
     color: #007EA7;
     cursor: pointer;
 }
+
+/* center forms */
+#week-page-left, #week-page-right {
+    position: relative;
+}
+
+#week-page-left #new-task-container h2, #week-page-left #new-event-container h2, #week-page-right #new-task-container h2, #week-page-right #new-event-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#week-page-left #new-task-container, #week-page-left #new-event-container, #week-page-right #new-task-container, #week-page-right #new-event-container {
+    top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	position: absolute;
+}

@@ -166,3 +166,13 @@ document.querySelector("div[class='arrow-right']").addEventListener('click', e =
     renderWeekPage(activeDate);
   }
 });
+
+
+function createFormContainer(page, formType, ...FormTypeTwo) {
+  const formsContainer = document.createElement('div')
+  formsContainer.className = "form-container";
+  formType(formsContainer)
+  FormTypeTwo(formsContainer)
+  page.appendChild(formsContainer)
+  page.style.position = "relative"
+}

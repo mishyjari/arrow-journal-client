@@ -301,10 +301,26 @@ div.form-container {
 }
 
 div.form-container > div:nth-child(1) {
-	/* background:red; */
 	margin-bottom: 1.5rem;
 }
 
 div.form-container * {
 	text-align: center;
+}
+
+/* Task/Event type styling */
+.event-item {
+	color: #00a6fb;
+}
+
+.task-item-completed {
+	color: #979dac;
+}
+
+.task-item-normal {
+	color: #1a936f;
+}
+
+.task-item-important {
+	color: #e63946;
 }
