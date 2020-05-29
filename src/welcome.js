@@ -52,11 +52,12 @@ const renderWelcomePagePrivate = () => {
     }
   });
   getTasks(task => {
-    console.log(task)
+    console.log(new Date(task.date).toLocaleDateString())
     if ( new Date(task.date).toLocaleDateString() === new Date().toLocaleDateString()) {
       const taskLi = document.createElement('li')
-      taskLi.appendChile(renderTaskItem(task))
+      taskLi.appendChild(renderTaskItem(task))
       tasksUl.appendChild(taskLi);
+      debugger
     }
   });
 

@@ -95,16 +95,45 @@ const renderNewTaskForm = parentNode => {
     });
   });
 };
+
+const renderTaskPopup = taskObj => {
+  const taskPopupContainer = document.createElement('div')
+  if ( taskObj.completed ){
+    taskPopupContainer.className = 'task-popup-completed'
+    taskPopupContainer.innerHTML = `
+      <h3>${taskObj.name}</h3>
+      <h4><em>Complete</em></h4>
+      <h5>Click to edit or alt-click to mark incomplete</h5>
+    `;
+  } else if ( taskObj.important ) {
+    taskPopupContainer.className = 'task-popup-important';
+    taskPopupContainer.innerHTML = `
+      <h3>IMPORTANT</h3>
+      <h3>${taskObj.name}</h3>
+      <h4><em>Inomplete</em></h4>
+      <h5>Click to edit or alt-click to mark complete</h5>
+    `;
+  } else {
+    taskPopupContainer.className = 'task-popup-normal'
+    taskPopupContainer.innerHTML = `
+      <h3>${taskObj.name}</h3>
+      <h3><em>Inomplete</em></h3>
+      <h5>Click to edit or alt-click to mark complete</h5>
+    `;
+  };
+  return taskPopupContainer;
+}
+
 const renderTaskItem = taskObj => {
 
   const taskItem = document.createElement('span')
 
   if ( taskObj.completed ) {
-    taskItem.className = 'completed';
+    taskItem.className = 'task-item-completed';
   } else if ( taskObj.important ){
-    taskItem.className = 'important';
+    taskItem.className = 'task-item-important';
   } else {
-    taskItem.className = 'task-item'
+    taskItem.className = 'task-item-normal'
   }
 
   taskItem.textContent = taskObj.name
@@ -112,7 +141,54 @@ const renderTaskItem = taskObj => {
 
   taskItem.addEventListener('click', e => {
     //renderEditEventForm(eventObj,e.target);
-    if ( e.altKey ) { console.log('alt-click')}
+    if ( e.altKey ) { toggleComplete(taskObj,e.target) }
   });
+
+  taskItem.addEventListener('mouseover', e => {
+    getOppositePage(e.target).appendChild(renderTaskPopup(taskObj))
+  });
+
+  taskItem.addEventListener('mouseleave', e => {
+    const parentClass = e.target.className;
+
+    let containerClass = parentClass.split('-')
+    containerClass.splice(1,1,'popup')
+    containerClass = containerClass.join('-')
+    document.querySelector(`div[class='${containerClass}']`).className = 'hidden'
+  });
+
   return taskItem;
+}
+
+const toggleComplete = (taskObj,parentNode  ) => {
+  const complete = !taskObj.complete;
+  const reqData = {
+    headers: _HEADERS,
+    method: "PATCH",
+    body: JSON.stringify({completed: complete, name: taskObj.name})
+  };
+  const url = 'http:/localhost:3000/tasks/' + taskObj.id;
+  fetch(url,reqData)
+  .then( res => res.json() )
+  .then( task => {
+      console.log(task)
+      setActiveUser();
+      setTimeout(() => {
+        const page = parentNode.id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+        }
+      },100)
+  })
 }

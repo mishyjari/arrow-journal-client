@@ -322,12 +322,32 @@ div.form-container * {
 }
 .task-item-completed {
 	color: #979dac;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .task-item-normal {
 	color: #1a936f;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 
 .task-item-important {
 	color: #e63946;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.task-item-important:hover {
+	cursor: pointer;
+	text-shadow: 1px 1px lightgrey;
+	border: 1px solid #e63946;
+	border-radius: 10px;
+}
+
+.task-item-normal:hover {
+	cursor: pointer;
+	text-shadow: 1px 1px lightgrey;
+	border: 1px solid #1a936f;
+	border-radius: 10px;
 }

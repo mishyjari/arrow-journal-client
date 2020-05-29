@@ -1,5 +1,6 @@
 .event-detail-container {
     background: #003459;
+    opacity: 0.8;
     display: block;
     z-index: 50;
     position: absolute;
@@ -9,8 +10,21 @@
     min-width: 400px;
     padding: 1rem;
     box-shadow: 2px 4px 8px rgba(0,0,0,.4);
+    border-radius: 10px;
 }
 
 .event-detail-container * {
     color: #f7f7f7;
+    text-align: center;
+}
+
+.event-detail-container h3 {
+  font-size: 3rem;
+  text-decoration: underline;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.event-detail-container p {
+  font-size: 2rem;
 }
