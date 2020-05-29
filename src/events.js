@@ -42,11 +42,11 @@ const renderNewEventForm = parentNode => {
               <td><input type='time' name='end-time'></td>
               <td><input type="date" name='end-date'></td>
             <tr>
-              <td><strong class='clickable'>All Day?</strong></td>
+              <td><strong class='clickable' id='all-day'>All Day?</strong></td>
             </tr>
         </table>
         <input type="submit" class='btn' value='Add Event'>
-        <h6 class='clickable'>cancel</h6>
+        <h6 class='clickable' id='cancel-btn'>cancel</h6>
       </form>
     </div>
   `;
@@ -55,9 +55,9 @@ const renderNewEventForm = parentNode => {
   parentNode.appendChild(newEventFormContainer);
 
   // Cancel buttopn hides form
-  const cancel = document.querySelector("h6[class='clickable']");
+  const cancel = document.getElementById('cancel-btn')
   cancel.addEventListener("click", e => {
-    e.target.parentNode.parentNode.className = 'hidden';
+    document.getElementById('new-event-container').className = 'hidden';
     navigate(parentNode.id.split('-')[0])
   });
 
@@ -177,6 +177,39 @@ const renderEditEventForm = (eventObj,target) => {
   form['start-date'].valueAsDate = start;
   form['end-time'].value = timeString(end);
   form['end-date'].valueAsDate = end;
+
+  document.getElementById('delete-event').addEventListener('click', () => {
+    const deleteData = {
+      headers: _HEADERS,
+      method: "DELETE",
+      body: {}
+    };
+    const url = `http://localhost:3000/events/${eventObj.id}`;
+
+
+    fetch(url, deleteData)
+    .then( res => res.json() )
+    .then( () => {
+      setActiveUser();
+      setTimeout(() => {
+        const page = getParentPage(form).id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+          };
+      },100)
+    })
+  })
 
   form.addEventListener('submit', e => {
 

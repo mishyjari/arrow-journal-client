@@ -193,7 +193,10 @@ const renderNewUserForm = () => {
       fetch(url, headerData)
       .then( res => res.json() )
       .then( user => {
-        console.log(user)
+        sessionStorage.clear()
+        createSession(user.id)
+        setActiveUser()
+        renderWelcomePagePrivate(user)
       })
     })
 };

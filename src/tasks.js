@@ -21,7 +21,7 @@ const renderNewTaskForm = parentNode => {
       <h2>New Task</h2>
       <form id='new-task-form' action='#'>
         <label for="name">Task Name: </label>
-        <input type='text' class='text-field' name='name' placeholder='Event Name'>
+        <input type='text' class='text-field' name='name' placeholder='Task Name'>
         <br />
         <label for="start">Start: </label>
         <input type="date" name='date' value="${new Date().toLocaleDateString()}"/>
@@ -31,7 +31,7 @@ const renderNewTaskForm = parentNode => {
         <br />
         <em>(only tasks marked important will appear on monthly and yearly overviews)</em>
         <br />
-        <input type="submit" class='btn' value='Add Event'>
+        <input type="submit" class='btn' value='Add Task'>
         <br />
         <h6 class='clickable'>cancel</h6>
       </form>
