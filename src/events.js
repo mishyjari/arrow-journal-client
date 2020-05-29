@@ -120,6 +120,11 @@ const renderNewEventForm = parentNode => {
   });
 };
 
-const renderEventLink = eventObj => {
-
+const renderEventLink = (eventObj, showDate, showMonth, showTime) => {
+  const d = new Date(eventObj.start_date);
+  let string = `${eventObj.name}`
+  if ( showMonth ) { string += `${ d.getMonth() + 1 } `};
+  if ( showDate ) { string += `${ d.getDate() } `};
+  if ( showTime ) { string += ` @${ d.toLocaleTimeString() }`};
+  return string;
 }

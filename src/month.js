@@ -73,7 +73,7 @@ const renderMonthPage = d => {
       if ( dayLine && start === day.toLocaleDateString() ){
         const eventItem = document.createElement('span')
         eventItem.className = 'event-item'
-        eventItem.textContent = ev.name
+        eventItem.innerHTML = renderEventLink(ev, false,false,true)
         dayLine.querySelector("span[class='daily-content-container']").prepend(eventItem)
       }
     })

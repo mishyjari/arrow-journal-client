@@ -311,8 +311,15 @@ div.form-container * {
 /* Task/Event type styling */
 .event-item {
 	color: #00a6fb;
+	padding-left: 5px;
+	padding-right: 5px;
 }
-
+.event-item:hover {
+	cursor: pointer;
+	text-shadow: 1px 1px lightgrey;
+	border: 1px solid #00a6fb;
+	border-radius: 10px;
+}
 .task-item-completed {
 	color: #979dac;
 }
