@@ -101,7 +101,7 @@ const renderNewEventForm = parentNode => {
         console.log(event)
         setActiveUser();
         setTimeout(() => {
-          const page = parentNode.id.split('-')[0];
+          const page = getParentPage(form).id.split('-')[0];
           switch(page) {
             case 'year':
               renderYearPage(activeDate)
@@ -165,8 +165,8 @@ const renderEditEventForm = (eventObj,target) => {
 
   const cancel = document.querySelector("h6[class='clickable']");
   cancel.addEventListener("click", e => {
-    e.target.parentNode.parentNode.className = 'hidden';
-    navigate(parentNode.id.split('-')[0])
+    document.getElementById('edit-event-container').className = 'hidden';
+    navigate(getParentPage(e.target).id.split('-')[0])
   });
 
   const form = document.getElementById('edit-event-form');
@@ -178,20 +178,22 @@ const renderEditEventForm = (eventObj,target) => {
   form['end-time'].value = timeString(end);
   form['end-date'].valueAsDate = end;
 
-  document.getElementById('delete-event').addEventListener('click', () => {
+  document.getElementById('delete-event').addEventListener('click', e => {
+
     const deleteData = {
       headers: _HEADERS,
       method: "DELETE",
-      body: {}
     };
     const url = `http://localhost:3000/events/${eventObj.id}`;
 
 
     fetch(url, deleteData)
     .then( res => res.json() )
-    .then( () => {
-      setActiveUser();
+    .then( data => {
+      console.log(data)
+      setActiveUser()
       setTimeout(() => {
+
         const page = getParentPage(form).id.split('-')[0];
         switch(page) {
           case 'year':

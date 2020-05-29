@@ -9,6 +9,7 @@ const navigate = (page, tab) => {
     tabArr[i].style.height = null
     tabArr[i].style.bottom = null
   }
+
   if (!tab) { tab = document.getElementById(`${page}-tab` )}
   if (getActiveUserId()) {
     switch (page) {
@@ -17,7 +18,7 @@ const navigate = (page, tab) => {
         tab.style.bottom = "-20px"
 
         updatePageIds('welcome-page');
-        renderWelcomePagePrivate(getActiveUserId())
+        renderWelcomePagePrivate()
         break;
       case "year":
         tab.style.height = "58px"
@@ -82,7 +83,6 @@ const populateRightTabs = () => {
     <div class="tab" id="year-tab">year</div>
     <div class="tab" id="month-tab">month</div>
     <div class="tab" id="week-tab">week</div>
-    <div class="tab" id="memo-tab">memos</div>
   `;
 };
 
@@ -175,7 +175,6 @@ document.querySelector("div[class='arrow-right']").addEventListener('click', e =
   nextPage();
 });
 window.addEventListener('keydown', e => {
-  e.target.key === "ArrowRight" ? nextPage() : previousPage()
   if ( e.key === "ArrowRight" ) { nextPage() }
   if ( e.key === "ArrowLeft" ) { previousPage() }
 })

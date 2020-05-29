@@ -76,6 +76,20 @@ const renderMonthPage = d => {
         dayLine.querySelector("span[class='daily-content-container']").prepend(renderEventItem(ev, false,false,true))
       }
     })
+    getTasks(task => {
+      const start = new Date(task.date).toLocaleDateString()
+      const dayLine = document.getElementById(`dayline-${start}`);
+      
+      if (task.important && dayLine && start === day.toLocaleString()) {
+        const y = new Date(task.date).getFullYear()
+        const m = new Date(task.date).getMonth();
+        const cell = document.getElementById(`month-cell-${y}-${m}`)
+        // Ignore events out of date range
+        if (cell) {
+          dayLine.querySelector("span[class='daily-content-container']").prepend(renderTaskItem(task))
+        }
+      }
+    })
   });
 
   // leftPage.appendChild(monthTable);

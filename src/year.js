@@ -62,6 +62,24 @@ const populateYear = monthsArray => {
       // cell.appendChild(eventLi)
       monthList.appendChild(eventLi)
     }
+  });
+
+  // Fetch events and populate
+  getTasks(ev => {
+    if (ev.important) {
+      const y = new Date(ev.date).getFullYear()
+      const m = new Date(ev.date).getMonth();
+      const cell = document.getElementById(`month-cell-${y}-${m}`)
+
+      // Ignore events out of date range
+      if (cell) {
+        const taskLi = document.createElement('li');
+        taskLi.appendChild(renderTaskItem(ev))
+        const taskList = cell.querySelector('ul')
+        // cell.appendChild(eventLi)
+        taskList.appendChild(taskLi)
+      }
+    }
   })
 };
 

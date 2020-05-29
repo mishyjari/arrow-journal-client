@@ -82,7 +82,7 @@ const renderWelcomePagePrivate = () => {
     document.getElementById('new-task-container').className = 'show';
     newTaskForm.date.valueAsDate = new Date(date);
   })
-
+/*
   //create memo form
   const taskFormContainer = document.createElement('div');
   leftPage.appendChild(taskFormContainer);
@@ -96,7 +96,7 @@ const renderWelcomePagePrivate = () => {
           <label for="content">Memo Content: </label>
           <textarea id="content" name="content" rows="4" cols="40" placeholder="Write your memo here"></textarea>
           <br />
-          
+
           <input type="submit" class='btn' value='Add Memo'>
           <br />
         </form>
@@ -149,7 +149,7 @@ const renderWelcomePagePrivate = () => {
       },100)
     });
 
-  })
+  }) */
 
 };
 
@@ -195,7 +195,9 @@ const renderLoginForm = () => {
     .then( user => {
       // This is not secure. Don't do this. We will get back to secure sessions if theres time.
       createSession(user.id)
-      renderWelcomePagePrivate(user)
+      setTimeout(() => {
+        renderWelcomePagePrivate()
+      }, 100);
     })
     .catch(err => {
       renderWelcomePublic();
@@ -265,7 +267,9 @@ const renderNewUserForm = () => {
         sessionStorage.clear()
         createSession(user.id)
         setActiveUser()
-        renderWelcomePagePrivate(user)
+        setTimeout(() => {
+          renderWelcomePagePrivate()
+        }, 100);
       })
     })
 };

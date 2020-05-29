@@ -143,6 +143,38 @@ const renderTaskItem = taskObj => {
   taskItem.addEventListener('click', e => {
     //renderEditEventForm(eventObj,e.target);
     if ( e.altKey ) { toggleComplete(taskObj,e.target) }
+    if ( e.altKey && e.shiftKey ) {
+      console.log('deleting...');
+      const deleteData = {
+        headers: _HEADERS,
+        method: "DELETE",
+      };
+      const url = `http://localhost.com/events/${taskObj.id}`;
+
+      fetch(url,deleteData)
+      .then(res => res.json() )
+      .then(data => {
+        console.log(data)
+        setActiveUser()
+        setTimeout(() => {
+        const page = getParentPage(form).id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+          };
+      },100)
+      })
+    }
   });
 
   taskItem.addEventListener('mouseover', e => {

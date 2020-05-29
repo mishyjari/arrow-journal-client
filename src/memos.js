@@ -1,51 +1,58 @@
+const renerMemoDiv = memoObj => {
+  const memoDiv = document.createElement('div');
+  memoDiv.className = 'memo-entry';
+  memoDiv.dataset.id = memoObj.id;
+  memoDiv.innerHTML = `
+    <span class="memo-date">${memo.created_at}</span>
+    <h3 class="memo-title">${memo.name}</h3>
+    <p>${memo.content}</p>
+    <span class="memo-delete-btn">Delete memo</span>
+  `;
+  return memoDiv;
+}
+
 const renderMemoPage = d => {
   clearPages();
 
-  const url = 'http://localhost:3000/memos'
+  const memos = getActiveUserJournal().memos;
 
-  const fetchMemos = () => {
-    fetch(url)
-      .then(resp => resp.json())
-      .then(memos => renderMemos(memos))
-  }
+  memos.forEach(memo => {
+    document.getElementById('memo-page-left').appendChild(memo);
+  })
 
-  fetchMemos();
-
-  const renderMemos = (memos) => {
-    const user = sessionStorage.getItem('journal')
-    console.log(user)
-
-    for (const memo of memos) {
-      // if (sessionStorage.userId === memo) {
-        const memoContainerDiv = document.createElement('div');
-        memoContainerDiv.className = "memo-entry";
-        memoContainerDiv.dataset.id = memo.id;
-        memoContainerDiv.innerHTML = `
-        <span class="memo-date">${memo.created_at}</span>
-        <h3 class="memo-title">${memo.name}</h3>
-        <p>${memo.content}</p>
-        <span class="memo-delete-btn">Delete memo</span>
-        `;
-        leftPage.appendChild(memoContainerDiv);
-      // }
-    }
-  }
-  
-
-  //event listener for delete btn
-  const journal = document.querySelector('main')
-
-  journal.addEventListener('click', (e) => {
+  document.querySelector("span[class='memo-delete-btn']").addEventListener('click', (e) => {
     if (e.target.className === "memo-delete-btn") {
       const parentElement = e.target.parentNode
       const id = e.target.parentNode.dataset.id
       // console.log(id)
 
-      fetch(`${url}/${id}`, {
-        method: "DELETE"
+      fetch(`http://localhost:3000/${id}`, {
+        header: _HEADERS,
+        method: "DELETE",
+        body: {}
       })
+        .then( res => res.json() )
         .then(() => {
-          parentElement.remove()
+          setActiveUser();
+          setTimeout(() => {
+            const page = getParentPage(form).id.split('-')[0];
+            switch(page) {
+              case 'year':
+                renderYearPage(activeDate)
+                break;
+              case 'month':
+                renderMonthPage(activeDate)
+                break;
+              case 'week':
+                renderWeekPage(activeDate)
+                break;
+              case 'welcome':
+                renderWelcomePagePrivate()
+                break;
+              case 'memo'
+                renderMemoPage(activeDate)
+              };
+          },100)
         })
     }
 
@@ -75,84 +82,4 @@ const renderMemoPage = d => {
     </div>
   `;
 
-}
-
-const renderNewMemoForm = parentNode => {
-  const taskFormContainer = document.createElement('div');
-  taskFormContainer.innerHTML = `
-      <div id="new-memo-container">
-        <h2>New Memo</h2>
-        <form id="new-memo-form" action="#">
-          <label for="title">Memo Title: </label>
-          <input type="text" name="title" placeholder="Memo Title">
-          <label for="content">Memo Content: </label>
-          <textarea id="content" name="content" rows="4" cols="50">
-            Write your memo here
-          </textarea>
-          <br />
-          <label for="start">Date: </label>
-          <input type="date" name='date' value="${new Date().toLocaleDateString()}"/>
-          <br />
-          <input type="submit" class='btn' value='Add Event'>
-          <br />
-          <h6 class='clickable'>cancel</h6>
-        </form>
-      </div>
-  `;
-
-  parentNode.appendChild(taskFormContainer);
-
-  const cancel = document.querySelector("h6[class='clickable']");
-  cancel.addEventListener("click", e => {
-    // e.target.parentNode.parentNode.className = 'hidden';
-    navigate(parentNode.id.split('-')[0])
-  }); 
-
-  const form = document.getElementById('new-memo-form');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const form = e.target;
-    const title = form.title.value;
-    const content = form.content.value;
-    const date = new Date(form.date.valueAsDate);
-    const completed = false;
-
-    const postData = {
-      headers: _HEADERS,
-      method: 'POST',
-      body: JSON.stringify({
-        name: title,
-        content: content,
-        journal_id: JSON.parse(sessionStorage.user).journal.id
-      })
-    };
-
-    const url = 'http://localhost:3000/memos'
-
-    fetch( url, postData )
-    .then( res => res.json() )
-    .then( memo => {
-      console.log(memo)
-      setActiveUser();
-      setTimeout(() => {
-        const page = parentNode.id.split('-')[0];
-        switch(page) {
-          case 'year':
-            renderYearPage(activeDate)
-            break;
-          case 'month':
-            renderMonthPage(activeDate)
-            break;
-          case 'week':
-            renderWeekPage(activeDate)
-            break;
-          case 'welcome':
-            renderWelcomePagePrivate()
-            break;
-        }
-      },100)
-    });
-
-  })
 }
