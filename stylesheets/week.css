@@ -95,3 +95,15 @@
 	text-align: center;
 	position: absolute;
 }
+
+#week-page-right {
+    position: relative;
+}
+
+#week-page-right #edit-event-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
