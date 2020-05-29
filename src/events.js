@@ -120,11 +120,68 @@ const renderNewEventForm = parentNode => {
   });
 };
 
-const renderEventLink = (eventObj, showDate, showMonth, showTime) => {
+const renderEditEventForm = (eventObj,target) => {
+  const editEventFormContainer = document.createElement('div');
+  const start = new Date(eventObj.start_date);
+  const end = new Date(eventObj.end_date);
+
+  editEventFormContainer.innerHTML = `
+  <div id='edit-event-container' class='show'>
+    <h2>Edit Event</h2>
+    <form id='edit-event-form' action='#'>
+      <label for="name">Event Name: </label>
+      <input type='text' class='text-field' name='name' placeholder='Event Name' value='${eventObj.name}'>
+      <br />
+      <label for="location">Location: </label>
+      <input type='text' class='text-field' name='location' placeholder='Location (optional)' value='${eventObj.location}'>
+      <br />
+      <table id='datetime-picker'>
+        <tr>
+          <td><label for="start">Start: </label></td>
+            <td><input type='time' name='start-time'></td>
+            <td><input type="date" name='start-date'></td>
+          </tr>
+          <tr>
+            <td><label for="end">End: </label></td>
+            <td><input type='time' name='end-time'></td>
+            <td><input type="date" name='end-date'></td>
+          <tr>
+            <td><strong class='clickable'>All Day?</strong></td>
+          </tr>
+      </table>
+      <input type="submit" class='btn' value='Update'>
+      <h6 class='clickable'>cancel</h6>
+      <br />
+      <input type='button' class='btn warn' value='DELETE' id='delete-event'>
+    </form>
+  </div>
+  `;
+
+  getOppositePage(target).innerHTML = '';
+  getOppositePage(target).appendChild(editEventFormContainer);
+
+  const form = document.getElementById('edit-event-form');
+  const endTime = end.toLocaleTimeString().split(":")
+  endTime.pop()
+  endTime.join(":")
+  form['start-time'].value = start;
+  form['start-date'].valueAsDate = start;
+  form['end-time'].value = end;
+  form['end-date'].valueAsDate = end;
+}
+
+
+const renderEventItem = (eventObj, showDate, showMonth, showTime) => {
   const d = new Date(eventObj.start_date);
   let string = `${eventObj.name}`
   if ( showMonth ) { string += `${ d.getMonth() + 1 } `};
   if ( showDate ) { string += `${ d.getDate() } `};
   if ( showTime ) { string += ` @${ d.toLocaleTimeString() }`};
-  return string;
+  const eventItem = document.createElement('span')
+  eventItem.className = 'event-item'
+  eventItem.innerHTML = string;
+  eventItem.addEventListener('click', e => {
+    renderEditEventForm(eventObj,e.target);
+  })
+  return eventItem;
 }

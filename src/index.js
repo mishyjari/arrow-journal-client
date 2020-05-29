@@ -17,6 +17,18 @@ const clearPages = () => {
 	console.log('pages clear')
 }
 
+const getParentPage = el => {
+	let parent = el.parentNode;
+	while ( parent.parentNode !== leftPage &&	parent.parentNode !== rightPage ){
+		parent = parent.parentNode;
+	};
+	return parent.parentNode;
+};
+
+const getOppositePage = el => {
+	return getParentPage(el) === leftPage ? rightPage : leftPage
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
 	clearPages();
