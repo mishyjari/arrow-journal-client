@@ -99,3 +99,38 @@
 #welcome-page-right #new-event-container label {
     font-size: 1.5rem;
 }
+
+#welcome-page-left #new-memo-container {
+    margin-top: 4rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#welcome-page-left #new-memo-container  {
+    text-align: center;
+}
+
+#welcome-page-left #new-memo-container input[type="text"] {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+#welcome-page-left #new-memo-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+#welcome-page-left #new-memo-container label {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+#welcome-page-left #new-memo-container textarea {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1rem;
+}

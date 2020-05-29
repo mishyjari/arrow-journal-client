@@ -82,6 +82,75 @@ const renderWelcomePagePrivate = () => {
     document.getElementById('new-task-container').className = 'show';
     newTaskForm.date.valueAsDate = new Date(date);
   })
+
+  //create memo form
+  const taskFormContainer = document.createElement('div');
+  leftPage.appendChild(taskFormContainer);
+
+  taskFormContainer.innerHTML = `
+      <div id="new-memo-container">
+        <h2>Create a New Memo</h2>
+        <form id="new-memo-form" action="#">
+          <label for="title">Memo Title: </label>
+          <input type="text" name="title" placeholder="Memo Title">
+          <label for="content">Memo Content: </label>
+          <textarea id="content" name="content" rows="4" cols="40" placeholder="Write your memo here"></textarea>
+          <br />
+          
+          <input type="submit" class='btn' value='Add Memo'>
+          <br />
+        </form>
+      </div>
+  `;
+
+  const form = document.getElementById('new-memo-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const title = form.title.value;
+    const content = form.content.value;
+    // const date = new Date(form.date.valueAsDate);
+    // const completed = false;
+
+    const postData = {
+      headers: _HEADERS,
+      method: 'POST',
+      body: JSON.stringify({
+        name: title,
+        content: content,
+        journal_id: JSON.parse(sessionStorage.user).journal.id
+      })
+    };
+
+    const url = 'http://localhost:3000/memos'
+
+    fetch( url, postData )
+    .then( res => res.json() )
+    .then( memo => {
+      console.log(memo)
+      setActiveUser();
+      setTimeout(() => {
+        const page = parentNode.id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+        }
+      },100)
+    });
+
+  })
+
 };
 
 // Forms for public (not logged in) welcome spread
@@ -222,3 +291,8 @@ const renderUserGreeting = () => {
   `;
   leftPage.appendChild(userGreetingContainer);
 }
+
+
+{/* <label for="start">Date: </label>
+          <input type="date" name='date' value="${new Date().toLocaleDateString()}"/>
+          <br /> */}

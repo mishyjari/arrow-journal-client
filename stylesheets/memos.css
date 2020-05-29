@@ -27,11 +27,11 @@
     text-decoration: underline;
 }
 
-#memo-page-left .memo-entry .memo-edit-btn, #memo-page-right .memo-entry .memo-edit-btn {
+#memo-page-left .memo-entry .memo-delete-btn, #memo-page-right .memo-entry .memo-delete-btn {
     display: none;
 }
 
-#memo-page-left .memo-entry:hover .memo-edit-btn, #memo-page-right .memo-entry:hover .memo-edit-btn {
+#memo-page-left .memo-entry:hover .memo-delete-btn, #memo-page-right .memo-entry:hover .memo-delete-btn {
     text-decoration: none;
     color: #f7f7f7;
     background: #003459;
@@ -43,7 +43,7 @@
     position: absolute;
 }
 
-#memo-page-left .memo-entry:hover .memo-edit-btn:hover, #memo-page-right .memo-entry:hover .memo-edit-btn:hover {
+#memo-page-left .memo-entry:hover .memo-delete-btn:hover, #memo-page-right .memo-entry:hover .memo-delete-btn:hover {
     cursor: pointer;
     background: #007EA7;
 }
