@@ -78,7 +78,7 @@ const renderWeekPage = d => {
     const cell = document.getElementById(`day-cell-${start.toLocaleDateString()}`);
     if ( cell ){
       const eventLi = document.createElement('li');
-      eventLi.textContent = event.name;
+      eventLi.appendChild(renderEventItem(event, false,false,true))
       cell.querySelector("ul[class='day-cell-list event-list']").appendChild(eventLi);
     }
   })

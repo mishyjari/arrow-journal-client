@@ -71,10 +71,7 @@ const renderMonthPage = d => {
       const start = new Date(ev.start_date).toLocaleDateString()
       const dayLine = document.getElementById(`dayline-${start}`);
       if ( dayLine && start === day.toLocaleDateString() ){
-        const eventItem = document.createElement('span')
-        eventItem.className = 'event-item'
-        eventItem.textContent = ev.name
-        dayLine.querySelector("span[class='daily-content-container']").prepend(eventItem)
+        dayLine.querySelector("span[class='daily-content-container']").prepend(renderEventItem(ev, false,false,true))
       }
     })
   });

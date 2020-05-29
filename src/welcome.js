@@ -47,7 +47,7 @@ const renderWelcomePagePrivate = () => {
   getEvents(ev => {
     if( new Date(ev.start_date).toLocaleDateString() === new Date().toLocaleDateString() ){
       const eventLi = document.createElement('li')
-      eventLi.innerHTML = ev.name;
+      eventLi.appendChild(renderEventItem(ev,false,false,true))
       eventsUl.appendChild(eventLi);
     }
   });
