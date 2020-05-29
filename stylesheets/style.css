@@ -311,6 +311,7 @@ div.form-container * {
 /* Task/Event type styling */
 .event-item {
 	color: #00a6fb;
+	margin-left: .25rem;
 }
 
 .task-item-completed {

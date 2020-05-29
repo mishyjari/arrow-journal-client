@@ -10,6 +10,7 @@
 
 #month-page-left ul li {
     transition: all .2s ease-in-out;
+    position: relative;
 }
 
 #month-page-left ul li:hover {
@@ -59,7 +60,14 @@
 #month-page-left .daily-content-container {
     display: inline-block;
     width: 80%;
-    position: relative;
+    position: absolute;
+    overflow: hidden;
+    height: 100%;
+}
+
+#month-page-left .daily-content-container span.event-item {
+    display: inline-block;
+    height: 100%;
 }
 
 #month-page-left .see-more {
