@@ -71,14 +71,15 @@ const renderNewEventForm = parentNode => {
     const form = e.target;
     const name = e.target.name.value;
     const location = e.target.location.value;
+
     const start_date = new Date(form['start-date'].value.split('-'));
     const end_date = new Date(form['end-date'].value.split('-'));
-    const t1 = new Date(form['start-time'].valueAsDate);
-    const t2 = new Date(form['end-time'].valueAsDate);
-    start_date.setHours(t1.getHours());
-    start_date.setMinutes(t1.getMinutes());
-    end_date.setHours(t2.getHours());
-    end_date.setMinutes(t2.getMinutes());
+    const start_time = form['start-time'].value.split(':');
+    const end_time = form['end-time'].value.split(':')
+    start_date.setHours(start_time[0]);
+    start_date.setMinutes(start_time[1]);
+    end_date.setHours(end_time[0]);
+    end_date.setMinutes(end_time[1]);
 
     const postData = {
       headers: _HEADERS,
@@ -172,12 +173,61 @@ const renderEditEventForm = (eventObj,target) => {
   const endTime = end.toLocaleTimeString().split(":")
   endTime.pop()
   endTime.join(":")
-  form['start-time'].value = start;
+  form['start-time'].value = timeString(start);
   form['start-date'].valueAsDate = start;
-  form['end-time'].value = end;
+  form['end-time'].value = timeString(end);
   form['end-date'].valueAsDate = end;
-  
 
+  form.addEventListener('submit', e => {
+
+    e.preventDefault()
+
+    const newStart = new Date(form['start-date'].value.split('-'))
+    newStart.setHours(form['start-time'].value.split(':')[0]);
+    newStart.setMinutes(form['start-time'].value.split(':')[1]);
+    const newEnd = new Date(form['end-date'].value.split('-'))
+    newEnd.setHours(form['end-time'].value.split(':')[0]);
+    newEnd.setMinutes(form['end-time'].value.split(':')[1]);
+
+
+    const body = {
+      name: form.name.value,
+      location: form.location.value,
+      start_date: newStart,
+      end_date: newEnd
+    }
+
+    // Send the patch req
+    const patchData = {
+      headers: _HEADERS,
+      method: "PATCH",
+      body: JSON.stringify(body)
+    };
+
+    fetch(`http://localhost:3000/events/${eventObj.id}`,patchData)
+      .then( res => res.json() )
+      .then( event => {
+        console.log(event)
+        setActiveUser();
+        setTimeout(() => {
+          const page = getParentPage(form).id.split('-')[0];
+          switch(page) {
+            case 'year':
+              renderYearPage(activeDate)
+              break;
+            case 'month':
+              renderMonthPage(activeDate)
+              break;
+            case 'week':
+              renderWeekPage(activeDate)
+              break;
+            case 'welcome':
+              renderWelcomePagePrivate()
+              break;
+            };
+        },100)
+      })
+  })
 
 };
 

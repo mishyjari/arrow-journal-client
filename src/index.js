@@ -28,6 +28,16 @@ const getOppositePage = el => {
 	return getParentPage(el) === leftPage ? rightPage : leftPage
 }
 
+const timeString = d => {
+	let h = d.getHours().toString();
+	let m = d.getMinutes().toString();
+
+	if ( h.length === 1 ) { h = `0${h}`}
+	if ( m.length === 1 ) { m = `0${m}`}
+
+	return `${h}:${m}`
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
 	clearPages();
