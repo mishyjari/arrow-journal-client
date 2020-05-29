@@ -10,6 +10,7 @@
 // Render Sign-In / Registration Forms
 const renderWelcomePublic = () => {
   clearPages();
+  updatePageIds('welcome-page');
 
   renderLoginForm();
   renderNewUserForm();
@@ -17,10 +18,63 @@ const renderWelcomePublic = () => {
 };
 
 // Render welcome page if user session exists
-const renderWelcomePagePrivate = user => {
+const renderWelcomePagePrivate = () => {
   clearPages();
+  const user = JSON.parse(sessionStorage.user);
+  updatePageIds('welcome-page');
 
-  leftPage.innerHTML = 'logged in as ' + user.username;
+  leftPage.innerHTML = `
+    <div id='welcome-private-left'>
+      <h1>Welcome ${user.name}!</h1>
+      <h2>${new Date().toDateString()}</h2>
+      <h3>Tasks Today <span class="add-btn add-task-btn"><i title="Add Task" class="fas fa-plus-square"></i></span></h3>
+      <ul id='welcome-tasks-list'></ul>
+      <h3>Events Today <span class="add-btn add-event-btn"><i title="Add Event" class="fas fa-plus-square"></i></span></h3>
+      <ul id='welcome-events-list'</ul>
+    </div>
+  `;
+  renderAboutPage()
+
+  const tasksUl = document.getElementById('welcome-tasks-list');
+  const eventsUl = document.getElementById('welcome-events-list');
+
+  getEvents(ev => {
+    if( new Date(ev.start_date).toLocaleDateString() === new Date().toLocaleDateString() ){
+      const eventLi = document.createElement('li')
+      eventLi.innerHTML = ev.name;
+      eventsUl.appendChild(eventLi);
+    }
+  });
+  getTasks(task => {
+    if ( new Date(task.date).toLocaleDateString() === new Date().toLocaleDateString()) {
+      const taskLi = document.createElement('li')
+      taskLi.innerHTML = task.name;
+      tasksUl.appendChild(taskLi);
+    }
+  });
+
+  document.querySelector("span[class='add-btn add-event-btn']").addEventListener("click", e => {
+    rightPage.innerHTML = '';
+    renderNewEventForm(rightPage);
+    const date = new Date().toLocaleDateString()
+    // Add Event form
+    const newEventForm = document.getElementById('new-event-form');
+    document.getElementById('new-event-container').className = 'show'
+    newEventForm['start-date'].valueAsDate = new Date(date);
+    newEventForm['end-date'].valueAsDate = new Date(date);
+    newEventForm['start-time'].value = '12:00'
+    newEventForm['end-time'].value = '13:00';
+  })
+
+  document.querySelector("span[class='add-btn add-task-btn']").addEventListener("click", e => {
+    rightPage.innerHTML = '';
+    renderNewTaskForm(rightPage);
+    const date = new Date().toLocaleDateString()
+    // Add Task form
+    const newTaskForm = document.getElementById('new-task-form');
+    document.getElementById('new-task-container').className = 'show';
+    newTaskForm.date.valueAsDate = new Date(date);
+  })
 };
 
 // Forms for public (not logged in) welcome spread
@@ -141,21 +195,7 @@ const renderNewUserForm = () => {
 const renderAboutPage = () => {
   const about = document.createElement('div');
   about.id = 'welcome-about';
-  about.innerHTML = `
-    <h1>Welcome to Arrow Journal</h1>
-    <p>Arrow Journal is part organizer, part planner and part journal.</p>
-    <p>With Arrow Journal you can:</p>
-    <ul>
-      <li>Do a thing</li>
-      <li>Do another thing</li>
-      <li>Do Something else</li>
-      <li>Do something cool</li>
-      <li>Do something lame</li>
-    </ul>
-    <p>Feel free to play around using the tabs up top.</p>
-    <p>And if you'd like to save your journal, use the sign up form on the left!</p>
-  `;
-
+  about.innerHTML = `<img src='assets/logo.png' alt='Arrow Journal' id='logo-welcome'>`
   rightPage.appendChild(about);
 };
 

@@ -87,6 +87,9 @@ const renderNewTaskForm = parentNode => {
           case 'week':
             renderWeekPage(activeDate)
             break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
         }
       },100)
     });

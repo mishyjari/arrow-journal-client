@@ -324,3 +324,7 @@ div.form-container * {
 .task-item-important {
 	color: #e63946;
 }
+
+img#logo-welcome {
+	width: 90%;
+}
