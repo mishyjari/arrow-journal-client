@@ -104,6 +104,23 @@
     background: #007EA7;
 }
 
-#month-page-right {
+#month-page-left #month-page-right {
+    position: relative;
+}
 
+#week-page-left #edit-event-container, #week-page-right #edit-event-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#week-page-left #edit-event-container h2, #week-page-right #edit-event-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#week-page-left #edit-event-container label, #week-page-right #edit-event-container label {
+    font-size: 1.5rem;
 }

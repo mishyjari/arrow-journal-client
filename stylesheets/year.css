@@ -42,3 +42,24 @@
     width: 100%;
     column-count: 2;
   }
+
+  #year-page-right {
+    position: relative;
+  }
+
+  #year-page-right #edit-event-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  #year-page-right #edit-event-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #year-page-right #edit-event-container label {
+    font-size: 1.5rem;
+  } 

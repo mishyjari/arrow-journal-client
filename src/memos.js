@@ -81,5 +81,29 @@ const renderNewMemoForm = parentNode => {
 
     const url = 'http://localhost:3000/memos'
 
+    fetch( url, postData )
+    .then( res => res.json() )
+    .then( memo => {
+      console.log(memo)
+      setActiveUser();
+      setTimeout(() => {
+        const page = parentNode.id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+        }
+      },100)
+    });
+
   })
 }

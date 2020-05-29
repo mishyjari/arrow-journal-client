@@ -1,0 +1,16 @@
+.event-detail-container {
+    background: #003459;
+    display: block;
+    z-index: 50;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 400px;
+    padding: 1rem;
+    box-shadow: 2px 4px 8px rgba(0,0,0,.4);
+}
+
+.event-detail-container * {
+    color: #f7f7f7;
+}
