@@ -65,7 +65,8 @@
 #month-page-left .see-more {
     position: absolute;
     right: 0;
-    bottom: -9px;
+    top: 50%;
+    transform: translateY(-65%);
     font-size: 1rem;
     display: none;
     padding: 2px 4px;
@@ -84,5 +85,5 @@
 }
 
 #month-page-right {
-    
+
 }

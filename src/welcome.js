@@ -26,11 +26,17 @@ const renderWelcomePagePrivate = () => {
   leftPage.innerHTML = `
     <div id='welcome-private-left'>
       <h1>Welcome ${user.name}!</h1>
-      <h2>${new Date().toDateString()}</h2>
-      <h3>Tasks Today <span class="add-btn add-task-btn"><i title="Add Task" class="fas fa-plus-square"></i></span></h3>
-      <ul id='welcome-tasks-list'></ul>
-      <h3>Events Today <span class="add-btn add-event-btn"><i title="Add Event" class="fas fa-plus-square"></i></span></h3>
-      <ul id='welcome-events-list'</ul>
+      <h2><strong>Today is:</strong> ${new Date().toDateString()}</h2>
+      <div class="details-container">
+        <div class="task-heading-container"><h3>Your Tasks for Today</h3><span class="add-btn add-task-btn"><i title="Add Task" class="fas fa-plus-square"></i></span></div>
+        <div class="task-list-container">
+          <ul id='welcome-tasks-list'></ul>
+        </div>
+        <div class="event-heading-container"><h3>Your Events for Today</h3><span class="add-btn add-event-btn"><i title="Add Event" class="fas fa-plus-square"></i></span></div>
+        <div class="event-list-container">
+          <ul id='welcome-events-list'</ul>
+        </div>
+      </div>
     </div>
   `;
   renderAboutPage()
