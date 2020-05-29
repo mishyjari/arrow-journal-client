@@ -308,3 +308,7 @@ div.form-container > div:nth-child(1) {
 div.form-container * {
 	text-align: center;
 }
+
+img#logo-welcome {
+	width: 90%;
+}

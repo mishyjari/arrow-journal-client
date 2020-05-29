@@ -111,8 +111,15 @@ const renderNewEventForm = parentNode => {
             case 'week':
               renderWeekPage(activeDate)
               break;
-          }
+            case 'welcome':
+              renderWelcomePagePrivate()
+              break;
+            };
         },100)
     });
   });
 };
+
+const renderEventLink = eventObj => {
+
+}
