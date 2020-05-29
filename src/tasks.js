@@ -42,7 +42,7 @@ const renderNewTaskForm = parentNode => {
 
   const cancel = document.querySelector("h6[class='clickable']");
   cancel.addEventListener("click", e => {
-    e.target.parentNode.parentNode.className = 'hidden';
+    document.getElementById('new-task-container').className = 'hidden';
     navigate(parentNode.id.split('-')[0])
   });
 
@@ -95,3 +95,24 @@ const renderNewTaskForm = parentNode => {
     });
   });
 };
+const renderTaskItem = taskObj => {
+
+  const taskItem = document.createElement('span')
+
+  if ( taskObj.completed ) {
+    taskItem.className = 'completed';
+  } else if ( taskObj.important ){
+    taskItem.className = 'important';
+  } else {
+    taskItem.className = 'task-item'
+  }
+
+  taskItem.textContent = taskObj.name
+  if ( taskItem.important ) { taskItem.textContent += ' (!)'}
+
+  taskItem.addEventListener('click', e => {
+    //renderEditEventForm(eventObj,e.target);
+    if ( e.altKey ) { console.log('alt-click')}
+  });
+  return taskItem;
+}

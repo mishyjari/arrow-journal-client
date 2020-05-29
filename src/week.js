@@ -88,7 +88,7 @@ const renderWeekPage = d => {
     const cell = document.getElementById(`day-cell-${date.toLocaleDateString()}`);
     if ( cell ){
       const taskLi = document.createElement('li');
-      taskLi.textContent = task.name;
+      taskLi.appendChild(renderTaskItem(task))
       cell.querySelector("ul[class='day-cell-list task-list']").appendChild(taskLi);
     }
   });

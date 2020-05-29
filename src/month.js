@@ -1,7 +1,7 @@
 const renderMonthPage = d => {
 
   clearPages();
-
+  renderAboutPage();
 
   const getDaysInMonth = d => {
     const month = d.getMonth();
@@ -52,13 +52,15 @@ const renderMonthPage = d => {
     dayList.appendChild(dayLine);
 
     dayLine.querySelector("i[title='Add Event']").addEventListener('click', e => {
+      document.getElementById('logo-welcome').className = 'hidden'
       // Add Event form
       const newEventForm = document.getElementById('new-event-form');
       document.getElementById('new-event-container').className = 'show'
       newEventForm['start-date'].valueAsDate = day;
       newEventForm['end-date'].valueAsDate = day;
-      newEventForm['start-time'].value = '12:00'
+      newEventForm['start-time'].value = '12:00';
       newEventForm['end-time'].value = '13:00';
+
       // Add Task form
       const newTaskForm = document.getElementById('new-task-form');
       document.getElementById('new-task-container').className = 'show';
@@ -85,6 +87,7 @@ const renderMonthPage = d => {
   rightPage.style.position = "relative";
 
   document.querySelector("strong[class='clickable']").addEventListener('click', e => {
+    rightPage.innerHTML = '';
     const newEventForm = document.getElementById('new-event-form');
     newEventForm['start-time'].value = '00:00'
     newEventForm['end-time'].value = '23:59';
