@@ -39,12 +39,17 @@ const renderWeekPage = d => {
       // Add Event form
       const newEventForm = document.getElementById('new-event-form');
       document.getElementById('new-event-container').className = 'show'
-      newEventForm['start-date'].valueAsDate = dateObj;
-      newEventForm['end-date'].valueAsDate = dateObj;
+      newEventForm['start-date'].valueAsDate = new Date(e.target.parentNode.parentNode.parentNode.parentNode.id.split('-')[2]);
+      newEventForm['end-date'].valueAsDate = new Date(e.target.parentNode.parentNode.parentNode.parentNode.id.split('-')[2]);
       newEventForm['start-time'].value = '12:00'
       newEventForm['end-time'].value = '13:00';
     })
-    dayCell.querySelector("span[class='add-btn add-task-btn']").addEventListener("click", () => {
+    dayCell.querySelector("span[class='add-btn add-task-btn']").addEventListener("click", e => {
+
+      const page = e.target.parentNode.parentNode.parentNode.parentNode.parentNode.className;
+      const opposite = page === 'right' ? leftPage : rightPage;
+      opposite.innerHTML = '';
+      renderNewTaskForm(opposite);
       // Add Task form
       const newTaskForm = document.getElementById('new-task-form');
       document.getElementById('new-task-container').className = 'show';
@@ -75,6 +80,16 @@ const renderWeekPage = d => {
       const eventLi = document.createElement('li');
       eventLi.textContent = event.name;
       cell.querySelector("ul[class='day-cell-list event-list']").appendChild(eventLi);
+    }
+  })
+
+  getTasks(task => {
+    const date = new Date(task.date);
+    const cell = document.getElementById(`day-cell-${date.toLocaleDateString()}`);
+    if ( cell ){
+      const taskLi = document.createElement('li');
+      taskLi.textContent = task.name;
+      cell.querySelector("ul[class='day-cell-list task-list']").appendChild(taskLi);
     }
   })
 };

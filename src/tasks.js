@@ -43,6 +43,7 @@ const renderNewTaskForm = parentNode => {
   const cancel = document.querySelector("h6[class='clickable']");
   cancel.addEventListener("click", e => {
     e.target.parentNode.parentNode.className = 'hidden';
+    navigate(parentNode.id.split('-')[0])
   });
 
   const form = document.getElementById('new-task-form');
