@@ -57,7 +57,7 @@ const populateYear = monthsArray => {
     // Ignore events out of date range
     if (cell) {
       const eventLi = document.createElement('li');
-      eventLi.textContent = ev.name;
+      eventLi.appendChild(renderEventItem(true,false,true))
       const monthList = cell.querySelector('ul')
       // cell.appendChild(eventLi)
       monthList.appendChild(eventLi)

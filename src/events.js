@@ -159,6 +159,13 @@ const renderEditEventForm = (eventObj,target) => {
 
   getOppositePage(target).innerHTML = '';
   getOppositePage(target).appendChild(editEventFormContainer);
+  //getOppositePage(target).appendChild(renderEventDetails(eventObj))
+
+  const cancel = document.querySelector("h6[class='clickable']");
+  cancel.addEventListener("click", e => {
+    e.target.parentNode.parentNode.className = 'hidden';
+    navigate(parentNode.id.split('-')[0])
+  });
 
   const form = document.getElementById('edit-event-form');
   const endTime = end.toLocaleTimeString().split(":")
@@ -168,8 +175,25 @@ const renderEditEventForm = (eventObj,target) => {
   form['start-date'].valueAsDate = start;
   form['end-time'].value = end;
   form['end-date'].valueAsDate = end;
-}
 
+
+};
+
+const renderEventDetails = eventObj => {
+  const eventDetailContainer = document.createElement('div');
+  eventDetailContainer.className = 'event-detail-container';
+  eventDetailContainer.innerHTML = `
+    <h3>Event Name</h3>
+    <p>${eventObj.name}</p>
+    <h3>Location</h3>
+    <p>${eventObj.location ? eventObj.location : "none"}</p>
+    <h3>Start Date</h3>
+    <p>${new Date(eventObj.start_date).toLocaleDateString()}</p>
+    <h3>End Date</h3>
+    <p>${new Date(eventObj.end_date).toLocaleDateString()}</p>
+  `;
+  return eventDetailContainer;
+};
 
 const renderEventItem = (eventObj, showDate, showMonth, showTime) => {
   const d = new Date(eventObj.start_date);
@@ -182,6 +206,12 @@ const renderEventItem = (eventObj, showDate, showMonth, showTime) => {
   eventItem.innerHTML = string;
   eventItem.addEventListener('click', e => {
     renderEditEventForm(eventObj,e.target);
+  });
+  eventItem.addEventListener('mouseover', e => {
+    getOppositePage(e.target).appendChild(renderEventDetails(eventObj))
+  })
+  eventItem.addEventListener('mouseleave', e => {
+    document.querySelector("div[class='event-detail-container']").className = 'hidden'
   })
   return eventItem;
 }
