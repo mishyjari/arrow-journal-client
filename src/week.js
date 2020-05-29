@@ -91,7 +91,13 @@ const renderWeekPage = d => {
       taskLi.textContent = task.name;
       cell.querySelector("ul[class='day-cell-list task-list']").appendChild(taskLi);
     }
-  })
+  });
+
+  // If activeDate has been pushed back to a sunday in the previous month, reset it the 1st to perserve date integrity
+  if ( new Date().getMonth() !== activeDate.getMonth() ){
+    activeDate.setMonth(new Date().getMonth());
+    activeDate.setDate(1)
+  }
 };
 
 const createWeekHeaders = () => {
