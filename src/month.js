@@ -42,7 +42,7 @@ const renderMonthPage = d => {
 
     //variable height of li's depending on days in month
     const daysInMonth = days.length
-    dayLine.style.height = `calc(100% / ${daysInMonth})`
+    dayLine.style.height = `calc(100% / ${daysInMonth})`;
 
     // dayLine.innerHTML = `
     //   <td class='add-event-dayline'><strong><i title="Add Event" class="fas fa-plus-square"></i></strong></td>

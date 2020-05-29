@@ -1,0 +1,64 @@
+#welcome-page-left #welcome-private-left h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+#welcome-page-left .details-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+#welcome-page-left #welcome-private-left h2 {
+    font-size: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+#welcome-page-left #welcome-private-left h2 strong {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.task-heading-container, .event-heading-container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #cecece;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+
+}
+
+#welcome-page-left #welcome-private-left h3 {
+    font-size: 1.5rem;
+}
+
+#welcome-page-left .event-list-container, #welcome-page-left .task-list-container {
+    margin-bottom: 2rem;
+    
+}
+
+#welcome-page-left .event-list-container ul, #welcome-page-left .task-list-container ul {
+    list-style-type: disc;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#welcome-page-right {
+    position: relative;
+}
+
+#welcome-page-right #welcome-about {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#welcome-page-right #welcome-about img {
+    width: 90%;
+    max-width: 275px;
+}
