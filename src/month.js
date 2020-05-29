@@ -80,8 +80,12 @@ const renderMonthPage = d => {
   });
 
   // leftPage.appendChild(monthTable);
-  renderNewEventForm(rightPage);
-  renderNewTaskForm(rightPage);
+  const formsContainer = document.createElement('div')
+  formsContainer.className = "form-container"
+  rightPage.appendChild(formsContainer)
+  renderNewEventForm(formsContainer);
+  renderNewTaskForm(formsContainer);
+  rightPage.style.position = "relative";
 
   document.querySelector("strong[class='clickable']").addEventListener('click', e => {
     const newEventForm = document.getElementById('new-event-form');

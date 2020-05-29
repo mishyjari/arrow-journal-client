@@ -293,9 +293,16 @@ main#journal-main {
 }
 
 div.form-container {
-	/* top: 50%;
-	transform: translateY(-50%); */
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	text-align: center;
+	position: absolute;
+}
+
+div.form-container > div:nth-child(1) {
+	/* background:red; */
+	margin-bottom: 1.5rem;
 }
 
 div.form-container * {
