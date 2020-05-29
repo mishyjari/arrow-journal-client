@@ -52,9 +52,10 @@ const renderNewTaskForm = parentNode => {
 
     const form = e.target;
     const name = form.name.value;
-    const date = new Date(form.date.valueAsDate);
+    const date = new Date(form.date.value.split("-"));
     const important = form.important.checked;
     const completed = false;
+
 
     const postData = {
       headers: _HEADERS,
@@ -161,11 +162,11 @@ const renderTaskItem = taskObj => {
 }
 
 const toggleComplete = (taskObj,parentNode  ) => {
-  const complete = !taskObj.complete;
+  const completed = !taskObj.completed;
   const reqData = {
     headers: _HEADERS,
     method: "PATCH",
-    body: JSON.stringify({completed: complete, name: taskObj.name})
+    body: JSON.stringify({completed: completed, name: taskObj.name})
   };
   const url = 'http:/localhost:3000/tasks/' + taskObj.id;
   fetch(url,reqData)
@@ -174,7 +175,7 @@ const toggleComplete = (taskObj,parentNode  ) => {
       console.log(task)
       setActiveUser();
       setTimeout(() => {
-        const page = parentNode.id.split('-')[0];
+        const page = getParentPage(parentNode).id.split('-')[0];
         switch(page) {
           case 'year':
             renderYearPage(activeDate)

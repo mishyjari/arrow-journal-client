@@ -20,6 +20,7 @@ const renderWelcomePublic = () => {
 // Render welcome page if user session exists
 const renderWelcomePagePrivate = () => {
   clearPages();
+  activeDate = new Date();
   const user = JSON.parse(sessionStorage.user);
   updatePageIds('welcome-page');
 
@@ -52,12 +53,10 @@ const renderWelcomePagePrivate = () => {
     }
   });
   getTasks(task => {
-    console.log(new Date(task.date).toLocaleDateString())
     if ( new Date(task.date).toLocaleDateString() === new Date().toLocaleDateString()) {
       const taskLi = document.createElement('li')
       taskLi.appendChild(renderTaskItem(task))
       tasksUl.appendChild(taskLi);
-      debugger
     }
   });
 

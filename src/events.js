@@ -161,6 +161,7 @@ const renderEditEventForm = (eventObj,target) => {
   getOppositePage(target).appendChild(editEventFormContainer);
   //getOppositePage(target).appendChild(renderEventDetails(eventObj))
 
+
   const cancel = document.querySelector("h6[class='clickable']");
   cancel.addEventListener("click", e => {
     e.target.parentNode.parentNode.className = 'hidden';
@@ -175,6 +176,7 @@ const renderEditEventForm = (eventObj,target) => {
   form['start-date'].valueAsDate = start;
   form['end-time'].value = end;
   form['end-date'].valueAsDate = end;
+  
 
 
 };
