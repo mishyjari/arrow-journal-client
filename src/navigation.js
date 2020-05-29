@@ -174,9 +174,9 @@ document.querySelector("div[class='arrow-left']").addEventListener('click', e =>
 document.querySelector("div[class='arrow-right']").addEventListener('click', e => {
   nextPage();
 });
-window.addEventListener('keydown', e => {
-  e.key === "ArrowRight" ? nextPage() : previousPage()
-})
+// window.addEventListener('keydown', e => {
+//   e.target.key === "ArrowRight" ? nextPage() : previousPage()
+// })
 
 
 function createFormContainer(page, formType, ...FormTypeTwo) {
