@@ -139,21 +139,7 @@ const renderArrowBtns = () => {
   journalMain.appendChild(arrowRight);
 };
 
-// Hanlde arrow navigation
-document.querySelector("div[class='arrow-left']").addEventListener('click', e => {
-  const timeScope = leftPage.id.split('-')[0];
-  if ( timeScope === 'year' ){
-    activeDate.setFullYear(activeDate.getFullYear() - 1);
-    renderYearPage(activeDate);
-  } else if ( timeScope === 'month' ){
-    activeDate.setMonth(activeDate.getMonth() - 1 );
-    renderMonthPage(activeDate)
-  } else if ( timeScope === 'week' ){
-    activeDate.setDate(activeDate.getDate() - 7 );
-    renderWeekPage(activeDate);
-  }
-});
-document.querySelector("div[class='arrow-right']").addEventListener('click', e => {
+const nextPage = () => {
   const timeScope = rightPage.id.split('-')[0];
   if ( timeScope === 'year' ){
     activeDate.setFullYear(activeDate.getFullYear() + 1);
@@ -165,7 +151,32 @@ document.querySelector("div[class='arrow-right']").addEventListener('click', e =
     activeDate.setDate(activeDate.getDate() + 7  );
     renderWeekPage(activeDate);
   }
+};
+
+const previousPage = () => {
+  const timeScope = leftPage.id.split('-')[0];
+  if ( timeScope === 'year' ){
+    activeDate.setFullYear(activeDate.getFullYear() - 1);
+    renderYearPage(activeDate);
+  } else if ( timeScope === 'month' ){
+    activeDate.setMonth(activeDate.getMonth() - 1 );
+    renderMonthPage(activeDate)
+  } else if ( timeScope === 'week' ){
+    activeDate.setDate(activeDate.getDate() - 7 );
+    renderWeekPage(activeDate);
+  }
+}
+
+// Hanlde arrow navigation
+document.querySelector("div[class='arrow-left']").addEventListener('click', e => {
+  previousPage()
 });
+document.querySelector("div[class='arrow-right']").addEventListener('click', e => {
+  nextPage();
+});
+window.addEventListener('keydown', e => {
+  e.key === "ArrowRight" ? nextPage() : previousPage()
+})
 
 
 function createFormContainer(page, formType, ...FormTypeTwo) {
