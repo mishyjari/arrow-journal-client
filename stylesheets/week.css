@@ -31,7 +31,7 @@
 
 #week-page-left .event-cell, #week-page-left .task-cell, #week-page-right .event-cell, #week-page-right .task-cell {
     margin-top: .5rem;
-    padding-left: .25rem;
+    padding-left: 1rem;
     padding-right: .25rem;
     min-height: 147px;
 }

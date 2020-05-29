@@ -21,7 +21,8 @@ const setActiveUser = () => {
           id: data.journals[0].id,
           name: data.journals[0].name,
           events: JSON.stringify(data.events),
-          tasks: JSON.stringify(data.tasks)
+          tasks: JSON.stringify(data.tasks),
+          memos: JSON.stringify(data.memos)
         }
       }));
       console.log('user data set in session storage')
@@ -34,7 +35,8 @@ const setActiveUser = () => {
 const getActiveUserJournal = () => {
   return {
     events: JSON.parse(JSON.parse(sessionStorage.user).journal.events),
-    tasks: JSON.parse(JSON.parse(sessionStorage.user).journal.tasks)
+    tasks: JSON.parse(JSON.parse(sessionStorage.user).journal.tasks),
+    memos: JSON.parse(JSON.parse(sessionStorage.user).journal.memos),
   }
 }
 

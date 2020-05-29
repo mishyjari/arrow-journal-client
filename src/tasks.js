@@ -42,7 +42,7 @@ const renderNewTaskForm = parentNode => {
 
   const cancel = document.querySelector("h6[class='clickable']");
   cancel.addEventListener("click", e => {
-    e.target.parentNode.parentNode.className = 'hidden';
+    document.getElementById('new-task-container').className = 'hidden';
     navigate(parentNode.id.split('-')[0])
   });
 
@@ -52,9 +52,10 @@ const renderNewTaskForm = parentNode => {
 
     const form = e.target;
     const name = form.name.value;
-    const date = new Date(form.date.valueAsDate);
+    const date = new Date(form.date.value.split("-"));
     const important = form.important.checked;
     const completed = false;
+
 
     const postData = {
       headers: _HEADERS,
@@ -95,3 +96,100 @@ const renderNewTaskForm = parentNode => {
     });
   });
 };
+
+const renderTaskPopup = taskObj => {
+  const taskPopupContainer = document.createElement('div')
+  if ( taskObj.completed ){
+    taskPopupContainer.className = 'task-popup-completed'
+    taskPopupContainer.innerHTML = `
+      <h3>${taskObj.name}</h3>
+      <h4><em>Complete</em></h4>
+      <h5>Click to edit or alt-click to mark incomplete</h5>
+    `;
+  } else if ( taskObj.important ) {
+    taskPopupContainer.className = 'task-popup-important';
+    taskPopupContainer.innerHTML = `
+      <h3>IMPORTANT</h3>
+      <h3>${taskObj.name}</h3>
+      <h4><em>Inomplete</em></h4>
+      <h5>Click to edit or alt-click to mark complete</h5>
+    `;
+  } else {
+    taskPopupContainer.className = 'task-popup-normal'
+    taskPopupContainer.innerHTML = `
+      <h3>${taskObj.name}</h3>
+      <h3><em>Inomplete</em></h3>
+      <h5>Click to edit or alt-click to mark complete</h5>
+    `;
+  };
+  return taskPopupContainer;
+}
+
+const renderTaskItem = taskObj => {
+
+  const taskItem = document.createElement('span')
+
+  if ( taskObj.completed ) {
+    taskItem.className = 'task-item-completed';
+  } else if ( taskObj.important ){
+    taskItem.className = 'task-item-important';
+  } else {
+    taskItem.className = 'task-item-normal'
+  }
+
+  taskItem.textContent = taskObj.name
+  if ( taskItem.important ) { taskItem.textContent += ' (!)'}
+
+  taskItem.addEventListener('click', e => {
+    //renderEditEventForm(eventObj,e.target);
+    if ( e.altKey ) { toggleComplete(taskObj,e.target) }
+  });
+
+  taskItem.addEventListener('mouseover', e => {
+    getOppositePage(e.target).appendChild(renderTaskPopup(taskObj))
+  });
+
+  taskItem.addEventListener('mouseleave', e => {
+    const parentClass = e.target.className;
+
+    let containerClass = parentClass.split('-')
+    containerClass.splice(1,1,'popup')
+    containerClass = containerClass.join('-')
+    document.querySelector(`div[class='${containerClass}']`).className = 'hidden'
+  });
+
+  return taskItem;
+}
+
+const toggleComplete = (taskObj,parentNode  ) => {
+  const completed = !taskObj.completed;
+  const reqData = {
+    headers: _HEADERS,
+    method: "PATCH",
+    body: JSON.stringify({completed: completed, name: taskObj.name})
+  };
+  const url = 'http:/localhost:3000/tasks/' + taskObj.id;
+  fetch(url,reqData)
+  .then( res => res.json() )
+  .then( task => {
+      console.log(task)
+      setActiveUser();
+      setTimeout(() => {
+        const page = getParentPage(parentNode).id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+        }
+      },100)
+  })
+}
