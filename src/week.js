@@ -12,6 +12,7 @@ const renderWeekPage = d => {
     d = new Date(d)
     d.setDate(d.getDate() + 1)
   };
+
   // This is the function we will use to create each day cell
   const createDayCell = dateObj => {
     const dayCell = document.createElement('div');
@@ -70,6 +71,11 @@ const renderWeekPage = d => {
     rightPage.appendChild(
       createDayCell(week.shift())
   )}
+
+  const logoDivSm = document.createElement('div')
+  logoDivSm.className = 'day-cell'
+  logoDivSm.innerHTML = `<img src='assets/logo.png' class='logo-img-small'>`
+  rightPage.appendChild(logoDivSm);
 
   // Will need to fetch and populate.
   // This isn't working yet. Besides, I'd rather query the DB more selectively.

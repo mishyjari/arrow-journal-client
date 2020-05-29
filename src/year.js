@@ -29,6 +29,9 @@ const createMonthCell = dateObject => {
         <ul class='month-cell-list'></ul>
         <span class="add-btn add-to-month"><i title="Add task or event" class="fas fa-plus-square"></i></span>
         `;
+    monthCell.querySelector("span[class='add-btn add-to-month']").addEventListener("click", e => {
+      renderEventAndTaskForms(getOppositePage(e.target));
+    })
   return monthCell;
 };
 

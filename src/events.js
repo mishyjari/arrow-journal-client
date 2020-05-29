@@ -303,3 +303,179 @@ const renderEventItem = (eventObj, showDate, showMonth, showTime) => {
   })
   return eventItem;
 }
+
+renderEventAndTaskForms = parentNode => {
+  console.log(parentNode)
+  const dualFormContainer = document.createElement('div');
+  dualFormContainer.id = 'dual-form-container';
+  // newEventFormContainer.className = "form-container";
+  dualFormContainer.innerHTML = `
+    <div id='new-event-container' class='container'>
+      <h2>New Event</h2>
+      <form id='new-event-form' action='#'>
+        <label for="name">Event Name: </label>
+        <input type='text' class='text-field' name='name' placeholder='Event Name'>
+        <br />
+        <label for="location">Location: </label>
+        <input type='text' class='text-field' name='location' placeholder='Location (optional)'>
+        <br />
+        <table id='datetime-picker'>
+          <tr>
+            <td><label for="start">Start: </label></td>
+              <td><input type='time' name='start-time'></td>
+              <td><input type="date" name='start-date'></td>
+            </tr>
+            <tr>
+              <td><label for="end">End: </label></td>
+              <td><input type='time' name='end-time'></td>
+              <td><input type="date" name='end-date'></td>
+            <tr>
+              <td><strong class='clickable' id='all-day'>All Day?</strong></td>
+            </tr>
+        </table>
+        <input type="submit" class='btn' value='Add Event'>
+      </form>
+    <br />
+    </div>
+    <div id='new-task-container' class='container'>
+      <h2>New Task</h2>
+      <form id='new-task-form' action='#'>
+        <label for="name">Task Name: </label>
+        <input type='text' class='text-field' name='name' placeholder='Task Name'>
+        <br />
+        <label for="start">Start: </label>
+        <input type="date" name='date' value="${new Date().toLocaleDateString()}"/>
+        <br />
+        <input type='checkbox' name='important' />
+        <strong> Important? </strong>
+        <br />
+        <em>(only tasks marked important will appear on monthly and yearly overviews)</em>
+        <br />
+        <input type="submit" class='btn' value='Add Task'>
+        <br />
+        <h6 class='clickable'>cancel</h6>
+      </form>
+    </div>
+  `;
+
+  parentNode.innerHTML = ''
+  parentNode.appendChild(dualFormContainer);
+
+
+  // Handle submit for new event
+  const eventForm = document.getElementById('new-event-form');
+  eventForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    // Store form data and parse dates
+    // Will need to add journal id
+    const form = e.target;
+    const name = e.target.name.value;
+    const location = e.target.location.value;
+
+    const start_date = new Date(form['start-date'].value.split('-'));
+    const end_date = new Date(form['end-date'].value.split('-'));
+    const start_time = form['start-time'].value.split(':');
+    const end_time = form['end-time'].value.split(':')
+    start_date.setHours(start_time[0]);
+    start_date.setMinutes(start_time[1]);
+    end_date.setHours(end_time[0]);
+    end_date.setMinutes(end_time[1]);
+
+    const postData = {
+      headers: _HEADERS,
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        location: location,
+        start_date: start_date,
+        end_date: end_date,
+        journal_id: JSON.parse(sessionStorage.user).journal.id
+      })
+    };
+
+    const url = 'http://localhost:3000/events';
+
+    fetch( url, postData )
+    .then( res => res.json() )
+    .then( event => {
+        console.log(event)
+        setActiveUser();
+        setTimeout(() => {
+          const page = getParentPage(form).id.split('-')[0];
+          switch(page) {
+            case 'year':
+              renderYearPage(activeDate)
+              break;
+            case 'month':
+              renderMonthPage(activeDate)
+              break;
+            case 'week':
+              renderWeekPage(activeDate)
+              break;
+            case 'welcome':
+              renderWelcomePagePrivate()
+              break;
+            };
+        },100)
+    });
+  });
+
+
+
+  const taskForm = document.getElementById('new-task-form');
+  taskForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const date = new Date(form.date.value.split("-"));
+    const important = form.important.checked;
+    const completed = false;
+
+
+    const postData = {
+      headers: _HEADERS,
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        date: date,
+        important: important,
+        completed: completed,
+        journal_id: JSON.parse(sessionStorage.user).journal.id
+      })
+    };
+
+    const url = 'http://localhost:3000/tasks';
+
+    fetch( url, postData )
+    .then( res => res.json() )
+    .then( task => {
+      console.log(task)
+      setActiveUser();
+      setTimeout(() => {
+        const page = parentNode.id.split('-')[0];
+        switch(page) {
+          case 'year':
+            renderYearPage(activeDate)
+            break;
+          case 'month':
+            renderMonthPage(activeDate)
+            break;
+          case 'week':
+            renderWeekPage(activeDate)
+            break;
+          case 'welcome':
+            renderWelcomePagePrivate()
+            break;
+        }
+      },100)
+    });
+  });
+  // Cancel buttopn hides form
+  const cancel = document.querySelector("h6[class='clickable']");
+  cancel.addEventListener("click", e => {
+    document.getElementById('new-task-container').className = 'hidden';
+    navigate(parentNode.id.split('-')[0])
+  });
+}
