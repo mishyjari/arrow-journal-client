@@ -175,6 +175,7 @@ document.querySelector("div[class='arrow-right']").addEventListener('click', e =
   nextPage();
 });
 window.addEventListener('keydown', e => {
+  e.target.key === "ArrowRight" ? nextPage() : previousPage()
   if ( e.key === "ArrowRight" ) { nextPage() }
   if ( e.key === "ArrowLeft" ) { previousPage() }
 })
