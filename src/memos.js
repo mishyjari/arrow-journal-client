@@ -28,3 +28,58 @@ const renderMemoPage = d => {
   `;
 
 }
+
+const renderNewMemoForm = parentNode => {
+  const taskFormContainer = document.createElement('div');
+  taskFormContainer.innerHTML = `
+      <div id="new-memo-container" class="hidden">
+        <h2>New Memo</h2>
+        <form id="new-memo-form" action="#">
+          <label for="content">Memo Content: </label>
+          <textarea id="content" name="content" rows="4" cols="50">
+            Write your memo here
+          </textarea>
+          <br />
+          <label for="start">Date: </label>
+          <input type="date" name='date' value="${new Date().toLocaleDateString()}"/>
+          <br />
+          <input type="submit" class='btn' value='Add Event'>
+          <br />
+          <h6 class='clickable'>cancel</h6>
+        </form>
+      </div>
+  `;
+
+  parentNode.appendChild(taskFormContainer);
+
+  const cancel = document.querySelector("h6[class='clickable']");
+  cancel.addEventListener("click", e => {
+    e.target.parentNode.parentNode.className = 'hidden';
+    navigate(parentNode.id.split('-')[0])
+  }); 
+
+  const form = document.getElementById('new-memo-form');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const content = form.content.value;
+    const date = new Date(form.date.valueAsDate);
+    const completed = false;
+
+    const postData = {
+      headers: _HEADERS,
+      method: 'POST',
+      body: JSON.stringify({
+        name: name,
+        date: date,
+        important: important,
+        completed: completed,
+        journal_id: JSON.parse(sessionStorage.user).journal.id
+      })
+    };
+
+    const url = 'http://localhost:3000/memos'
+
+  })
+}

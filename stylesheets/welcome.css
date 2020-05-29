@@ -62,3 +62,40 @@
     width: 90%;
     max-width: 275px;
 }
+
+#welcome-page-right {
+    position: relative;
+}
+
+#welcome-page-right #new-task-container, #welcome-page-right #new-event-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#welcome-page-right #new-task-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#welcome-page-right #new-task-container label {
+    font-size: 1.5rem;
+}
+
+#welcome-page-right #new-task-container em {
+    margin: .5rem auto;
+    display: inline-block;
+}
+
+#welcome-page-right #new-event-container h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#welcome-page-right #new-event-container label {
+    font-size: 1.5rem;
+}
